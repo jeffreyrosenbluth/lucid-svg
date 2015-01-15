@@ -87,6 +87,14 @@ tA x y = T.concat ["T ", " ", x, ",", y, " "]
 tR :: Text -> Text -> Text
 tR x y = T.concat [ "t ", " ", x, ",", y, " "]
 
+aA :: Text -> Text -> Text -> Text -> Text -> Text -> Text -> Text
+aA rx ry xrot largeFlag sweepFlag x y =
+  T.concat ["A ", rx, ",", ry, " ", xrot, " ", largeFlag, " ", sweepFlag, " ", x, " ", y, " "]
+
+aR :: Text -> Text -> Text -> Text -> Text -> Text -> Text -> Text
+aR rx ry xrot largeFlag sweepFlag x y =
+  T.concat ["a ", rx, ",", ry, " ", xrot, " ", largeFlag, " ", sweepFlag, " ", x, " ", y, " "]
+
 -- | closepath
 z :: Text
 z = "Z"
