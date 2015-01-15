@@ -1,7 +1,5 @@
 {-# LANGUAGE FlexibleContexts          #-}
 {-# LANGUAGE OverloadedStrings         #-}
-{-# LANGUAGE NoMonomorphismRestriction #-}
-{-# OPTIONS -fno-warn-type-defaults    #-}
 
 module Lucid.Svg where
 
