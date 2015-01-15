@@ -19,6 +19,7 @@ cabal-version:       >=1.10
 library
   ghc-options:         -Wall -rtsopts -O2
   exposed-modules:     Lucid.Svg,
+                       Lucid.Svg.Path,
                        Lucid.Svg.Elements,
                        Lucid.Svg.Attributes
   build-depends:       base >=4.7 && <4.8,

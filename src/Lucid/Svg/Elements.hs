@@ -1,284 +1,290 @@
-{-# LANGUAGE OverloadedStrings         #-}
+{-# LANGUAGE OverloadedStrings #-}
 
 module Lucid.Svg.Elements where 
 
+import Data.Text (Text)
 import Lucid.Base
+
+-- | Make an HTML builder for elements with no content, only attributes.
+--   SVG circle for example.
+makeElementNoContent :: Monad m => Text -> HtmlT m ()
+makeElementNoContent name = makeElement name ""
 
 -- | @a@ element
 a_ :: Term arg result => arg -> result
 a_ = term "a"
 
 -- | @altglyph@ element
-altglyph_ :: Term arg result => arg -> result
-altglyph_ = term "altglyph"
+altGlyph_ :: Monad m => [Attribute] -> HtmlT m ()
+altGlyph_ = with $ makeElementNoContent "altGlyph"
 
 -- | @altglyphdef@ element
-altglyphdef_ :: Term arg result => arg -> result
-altglyphdef_ = term "altglyphdef"
+altGlyphDef_ :: Monad m => [Attribute] -> HtmlT m ()
+altGlyphDef_ = with $ makeElementNoContent "altGlyphDef" 
 
 -- | @altglyphitem@ element
-altglyphitem_ :: Term arg result => arg -> result
-altglyphitem_ = term "altglyphitem"
+altGlyphItem_ :: Monad m => [Attribute] -> HtmlT m ()
+altGlyphItem_ = with $ makeElementNoContent "altGlyphItem" 
 
 -- | @animate@ element
-animate_ :: Term arg result => arg -> result
-animate_ = term "animate"
+animate_ :: Monad m => [Attribute] -> HtmlT m ()
+animate_ = with $ makeElementNoContent "animate" 
 
 -- | @animatecolor@ element
-animatecolor_ :: Term arg result => arg -> result
-animatecolor_ = term "animatecolor"
+animateColor_ :: Monad m => [Attribute] -> HtmlT m ()
+animateColor_ = with $ makeElementNoContent "animateColor" 
 
 -- | @animatemotion@ element
-animatemotion_ :: Term arg result => arg -> result
-animatemotion_ = term "animatemotion"
+animateMotion_ :: Monad m => [Attribute] -> HtmlT m ()
+animateMotion_ = with $ makeElementNoContent "animateMotion" 
 
 -- | @animatetransform@ element
-animatetransform_ :: Term arg result => arg -> result
-animatetransform_ = term "animatetransform"
+animateTransform_ :: Monad m => [Attribute] -> HtmlT m ()
+animateTransform_ = with $ makeElementNoContent "animateTransform" 
 
 -- | @circle@ element
-circle_ :: Term arg result => arg -> result
-circle_ = term "circle"
+circle_ :: Monad m => [Attribute] -> HtmlT m ()
+circle_ = with $ makeElementNoContent "circle" 
 
 -- | @clippath@ element
 clippath_ :: Term arg result => arg -> result
 clippath_ = term "clippath"
 
--- | @colorProfile@ element
-colorProfile_ :: Term arg result => arg -> result
-colorProfile_ = term "colorProfile"
+-- | @colorProfile@ element 
+colorProfile_ :: Monad m => [Attribute] -> HtmlT m ()
+colorProfile_ = with $ makeElementNoContent "color-profile" 
 
 -- | @cursor@ element
-cursor_ :: Term arg result => arg -> result
-cursor_ = term "cursor"
+cursor_ :: Monad m => [Attribute] -> HtmlT m ()
+cursor_ = with $ makeElementNoContent "cursor" 
 
 -- | @defs@ element
 defs_ :: Term arg result => arg -> result
 defs_ = term "defs"
 
 -- | @desc@ element
-desc_ :: Term arg result => arg -> result
-desc_ = term "desc"
+desc_ :: Monad m => [Attribute] -> HtmlT m ()
+desc_ = with $ makeElementNoContent "desc" 
 
 -- | @ellipse@ element
-ellipse_ :: Term arg result => arg -> result
-ellipse_ = term "ellipse"
+ellipse_ :: Monad m => [Attribute] -> HtmlT m ()
+ellipse_ = with $ makeElementNoContent "ellipse" 
 
 -- | @feblend@ element
-feblend_ :: Term arg result => arg -> result
-feblend_ = term "feblend"
+feBlend_ :: Monad m => [Attribute] -> HtmlT m ()
+feBlend_ = with $ makeElementNoContent "feBlend" 
 
 -- | @fecolormatrix@ element
-fecolormatrix_ :: Term arg result => arg -> result
-fecolormatrix_ = term "fecolormatrix"
+feColorMatrix_ :: Monad m => [Attribute] -> HtmlT m ()
+feColorMatrix_ = with $ makeElementNoContent "feColorMatrix" 
 
 -- | @fecomponenttransfer@ element
-fecomponenttransfer_ :: Term arg result => arg -> result
-fecomponenttransfer_ = term "fecomponenttransfer"
+feComponentTransfer_ :: Monad m => [Attribute] -> HtmlT m ()
+feComponentTransfer_ = with $ makeElementNoContent "feComponentTransfer" 
 
 -- | @fecomposite@ element
-fecomposite_ :: Term arg result => arg -> result
-fecomposite_ = term "fecomposite"
+feComposite_ :: Monad m => [Attribute] -> HtmlT m ()
+feComposite_ = with $ makeElementNoContent "feComposite" 
 
 -- | @feconvolvematrix@ element
-feconvolvematrix_ :: Term arg result => arg -> result
-feconvolvematrix_ = term "feconvolvematrix"
+feConvolveMatrix_ :: Monad m => [Attribute] -> HtmlT m ()
+feConvolveMatrix_ = with $ makeElementNoContent "feConvolveMatrix" 
 
 -- | @fediffuselighting@ element
-fediffuselighting_ :: Term arg result => arg -> result
-fediffuselighting_ = term "fediffuselighting"
+feDiffuseLighting_ :: Monad m => [Attribute] -> HtmlT m ()
+feDiffuseLighting_ = with $ makeElementNoContent "feDiffuseLighting" 
 
 -- | @fedisplacementmap@ element
-fedisplacementmap_ :: Term arg result => arg -> result
-fedisplacementmap_ = term "fedisplacementmap"
+feDisplacementMap_ :: Monad m => [Attribute] -> HtmlT m ()
+feDisplacementMap_ = with $ makeElementNoContent "feDisplacementMap" 
 
 -- | @fedistantlight@ element
-fedistantlight_ :: Term arg result => arg -> result
-fedistantlight_ = term "fedistantlight"
+feDistantLight_ :: Monad m => [Attribute] -> HtmlT m ()
+feDistantLight_ = with $ makeElementNoContent "feDistantLight" 
 
 -- | @feflood@ element
-feflood_ :: Term arg result => arg -> result
-feflood_ = term "feflood"
+feFlood_ :: Monad m => [Attribute] -> HtmlT m ()
+feFlood_ = with $ makeElementNoContent "feFlood" 
 
 -- | @fefunca@ element
-fefunca_ :: Term arg result => arg -> result
-fefunca_ = term "fefunca"
+feFuncA_ :: Monad m => [Attribute] -> HtmlT m ()
+feFuncA_ = with $ makeElementNoContent "feFuncA" 
 
 -- | @fefuncb@ element
-fefuncb_ :: Term arg result => arg -> result
-fefuncb_ = term "fefuncb"
+feFuncB_ :: Monad m => [Attribute] -> HtmlT m ()
+feFuncB_ = with $ makeElementNoContent "feFuncB" 
 
 -- | @fefuncg@ element
-fefuncg_ :: Term arg result => arg -> result
-fefuncg_ = term "fefuncg"
+feFuncG_ :: Monad m => [Attribute] -> HtmlT m ()
+feFuncG_ = with $ makeElementNoContent "feFuncG" 
 
 -- | @fefuncr@ element
-fefuncr_ :: Term arg result => arg -> result
-fefuncr_ = term "fefuncr"
+feFuncR_ :: Monad m => [Attribute] -> HtmlT m ()
+feFuncR_ = with $ makeElementNoContent "feFuncR" 
 
 -- | @fegaussianblur@ element
-fegaussianblur_ :: Term arg result => arg -> result
-fegaussianblur_ = term "fegaussianblur"
+feGaussianBlur_ :: Monad m => [Attribute] -> HtmlT m ()
+feGaussianBlur_ = with $ makeElementNoContent "feGaussianBlur" 
 
 -- | @feimage@ element
-feimage_ :: Term arg result => arg -> result
-feimage_ = term "feimage"
+feImage_ :: Monad m => [Attribute] -> HtmlT m ()
+feImage_ = with $ makeElementNoContent "feImage" 
 
 -- | @femerge@ element
-femerge_ :: Term arg result => arg -> result
-femerge_ = term "femerge"
+feMerge_ :: Monad m => [Attribute] -> HtmlT m ()
+feMerge_ = with $ makeElementNoContent "feMerge" 
 
 -- | @femergenode@ element
-femergenode_ :: Term arg result => arg -> result
-femergenode_ = term "femergenode"
+feMergeNode_ :: Monad m => [Attribute] -> HtmlT m ()
+feMergeNode_ = with $ makeElementNoContent "feMergeNode" 
 
 -- | @femorphology@ element
-femorphology_ :: Term arg result => arg -> result
-femorphology_ = term "femorphology"
+feMorphology_ :: Monad m => [Attribute] -> HtmlT m ()
+feMorphology_ = with $ makeElementNoContent "feMorphology" 
 
 -- | @feoffset@ element
-feoffset_ :: Term arg result => arg -> result
-feoffset_ = term "feoffset"
+feOffset_ :: Monad m => [Attribute] -> HtmlT m ()
+feOffset_ = with $ makeElementNoContent "feOffset" 
 
 -- | @fepointlight@ element
-fepointlight_ :: Term arg result => arg -> result
-fepointlight_ = term "fepointlight"
+fePointLight_ :: Monad m => [Attribute] -> HtmlT m ()
+fePointLight_ = with $ makeElementNoContent "fePointLight" 
 
 -- | @fespecularlighting@ element
-fespecularlighting_ :: Term arg result => arg -> result
-fespecularlighting_ = term "fespecularlighting"
+feSpecularLighting_ :: Monad m => [Attribute] -> HtmlT m ()
+feSpecularLighting_ = with $ makeElementNoContent "feSpecularLighting" 
 
 -- | @fespotlight@ element
-fespotlight_ :: Term arg result => arg -> result
-fespotlight_ = term "fespotlight"
+feSpotLight_ :: Monad m => [Attribute] -> HtmlT m ()
+feSpotLight_ = with $ makeElementNoContent "feSpotLight" 
 
 -- | @fetile@ element
-fetile_ :: Term arg result => arg -> result
-fetile_ = term "fetile"
+feTile_ :: Monad m => [Attribute] -> HtmlT m ()
+feTile_ = with $ makeElementNoContent "feTile" 
 
 -- | @feturbulence@ element
-feturbulence_ :: Term arg result => arg -> result
-feturbulence_ = term "feturbulence"
+feTurbulence_ :: Monad m => [Attribute] -> HtmlT m ()
+feTurbulence_ = with $ makeElementNoContent "feTurbulence" 
 
 -- | @filter_@ element
-filter__ :: Term arg result => arg -> result
-filter__ = term "filter_"
+filter_ :: Monad m => [Attribute] -> HtmlT m ()
+filter_ = with $ makeElementNoContent "filter" 
 
 -- | @font@ element
-font_ :: Term arg result => arg -> result
-font_ = term "font"
+font_ :: Monad m => [Attribute] -> HtmlT m ()
+font_ = with $ makeElementNoContent "font" 
 
 -- | @fontFace@ element
-fontFace_ :: Term arg result => arg -> result
-fontFace_ = term "fontFace"
+fontFace_ :: Monad m => [Attribute] -> HtmlT m ()
+fontFace_ = with $ makeElementNoContent "font-face" 
 
 -- | @fontFaceFormat@ element
-fontFaceFormat_ :: Term arg result => arg -> result
-fontFaceFormat_ = term "fontFaceFormat"
+fontFaceFormat_ :: Monad m => [Attribute] -> HtmlT m ()
+fontFaceFormat_ = with $ makeElementNoContent "font-face-format" 
 
 -- | @fontFaceName@ element
-fontFaceName_ :: Term arg result => arg -> result
-fontFaceName_ = term "fontFaceName"
+fontFaceName_ :: Monad m => [Attribute] -> HtmlT m ()
+fontFaceName_ = with $ makeElementNoContent "font-face-name" 
 
 -- | @fontFaceSrc@ element
-fontFaceSrc_ :: Term arg result => arg -> result
-fontFaceSrc_ = term "fontFaceSrc"
+fontFaceSrc_ :: Monad m => [Attribute] -> HtmlT m ()
+fontFaceSrc_ = with $ makeElementNoContent "font-face-src" 
 
 -- | @fontFaceUri@ element
-fontFaceUri_ :: Term arg result => arg -> result
-fontFaceUri_ = term "fontFaceUri"
+fontFaceUri_ :: Monad m => [Attribute] -> HtmlT m ()
+fontFaceUri_ = with $ makeElementNoContent "font-face-uri" 
 
 -- | @foreignobject@ element
-foreignobject_ :: Term arg result => arg -> result
-foreignobject_ = term "foreignobject"
+foreignObject_ :: Monad m => [Attribute] -> HtmlT m ()
+foreignObject_ = with $ makeElementNoContent "foreignObject" 
 
 -- | @g@ element
 g_ :: Term arg result => arg -> result
 g_ = term "g"
 
--- | @glyph@ element
+-- | @glyph@ element or attribute
 glyph_ :: Term arg result => arg -> result
 glyph_ = term "glyph"
 
 -- | @glyphref@ element
-glyphref_ :: Term arg result => arg -> result
-glyphref_ = term "glyphref"
+glyphRef_ :: Monad m => [Attribute] -> HtmlT m ()
+glyphRef_ = with $ makeElementNoContent "glyphRef" 
 
 -- | @hkern@ element
-hkern_ :: Term arg result => arg -> result
-hkern_ = term "hkern"
+hkern_ :: Monad m => [Attribute] -> HtmlT m ()
+hkern_ = with $ makeElementNoContent "hkern" 
 
 -- | @image@ element
-image_ :: Term arg result => arg -> result
-image_ = term "image"
+image_ :: Monad m => [Attribute] -> HtmlT m ()
+image_ = with $ makeElementNoContent "image" 
 
 -- | @line@ element
-line_ :: Term arg result => arg -> result
-line_ = term "line"
+line_ :: Monad m => [Attribute] -> HtmlT m ()
+line_ = with $ makeElementNoContent "line" 
 
 -- | @lineargradient@ element
-lineargradient_ :: Term arg result => arg -> result
-lineargradient_ = term "lineargradient"
+linearGradient_ :: Term arg result => arg -> result
+linearGradient_ = term "linearGradient"
 
 -- | @marker@ element
 marker_ :: Term arg result => arg -> result
 marker_ = term "marker"
 
--- | @mask@ element
+-- | @mask@ element or attribute
 mask_ :: Term arg result => arg -> result
 mask_ = term "mask"
 
 -- | @metadata@ element
-metadata_ :: Term arg result => arg -> result
-metadata_ = term "metadata"
+metadata_ :: Monad m => [Attribute] -> HtmlT m ()
+metadata_ = with $ makeElementNoContent "metadata" 
 
 -- | @missingGlyph@ element
 missingGlyph_ :: Term arg result => arg -> result
-missingGlyph_ = term "missingGlyph"
+missingGlyph_ = term "missing-glyph"
 
 -- | @mpath@ element
-mpath_ :: Term arg result => arg -> result
-mpath_ = term "mpath"
+mpath_ :: Monad m => [Attribute] -> HtmlT m ()
+mpath_ = with $ makeElementNoContent "mpath" 
 
 -- | @path@ element
-path_ :: Term arg result => arg -> result
-path_ = term "path"
+path_ :: Monad m => [Attribute] -> HtmlT m ()
+path_ = with $ makeElementNoContent "path" 
 
 -- | @pattern@ element
 pattern_ :: Term arg result => arg -> result
 pattern_ = term "pattern"
 
 -- | @polygon@ element
-polygon_ :: Term arg result => arg -> result
-polygon_ = term "polygon"
+polygon_ :: Monad m => [Attribute] -> HtmlT m ()
+polygon_ = with $ makeElementNoContent "polygon" 
 
 -- | @polyline@ element
-polyline_ :: Term arg result => arg -> result
-polyline_ = term "polyline"
+polyline_ :: Monad m => [Attribute] -> HtmlT m ()
+polyline_ = with $ makeElementNoContent "polyline" 
 
 -- | @radialgradient@ element
-radialgradient_ :: Term arg result => arg -> result
-radialgradient_ = term "radialgradient"
+radialGradient_ :: Term arg result => arg -> result
+radialGradient_ = term "radialGradient"
 
 -- | @rect@ element
-rect_ :: Term arg result => arg -> result
-rect_ = term "rect"
+rect_ :: Monad m => [Attribute] -> HtmlT m ()
+rect_ = with $ makeElementNoContent "rect"
 
 -- | @script@ element
-script_ :: Term arg result => arg -> result
-script_ = term "script"
+script_ :: Monad m => [Attribute] -> HtmlT m ()
+script_ = with $ makeElementNoContent "script" 
 
 -- | @set@ element
-set_ :: Term arg result => arg -> result
-set_ = term "set"
+set_ :: Monad m => [Attribute] -> HtmlT m ()
+set_ = with $ makeElementNoContent "set" 
 
 -- | @stop@ element
-stop_ :: Term arg result => arg -> result
-stop_ = term "stop"
+stop_ :: Monad m => [Attribute] -> HtmlT m ()
+stop_ = with $ makeElementNoContent "stop" 
 
 -- | @style@ element
-style_ :: Term arg result => arg -> result
-style_ = term "style"
+style_ :: Monad m => [Attribute] -> HtmlT m ()
+style_ = with $ makeElementNoContent "style" 
 
 -- | @svg@ element
 svg_ :: Term arg result => arg -> result
@@ -293,33 +299,33 @@ symbol_ :: Term arg result => arg -> result
 symbol_ = term "symbol"
 
 -- | @text_@ element
-text__ :: Term arg result => arg -> result
-text__ = term "text_"
+text_ :: Term arg result => arg -> result
+text_ = term "text"
 
 -- | @textpath@ element
-textpath_ :: Term arg result => arg -> result
-textpath_ = term "textpath"
+textPath_ :: Monad m => [Attribute] -> HtmlT m ()
+textPath_ = with $ makeElementNoContent "textPath" 
 
 -- | @title@ element
-title_ :: Term arg result => arg -> result
-title_ = term "title"
+title_ :: Monad m => [Attribute] -> HtmlT m ()
+title_ = with $ makeElementNoContent "title" 
 
 -- | @tref@ element
-tref_ :: Term arg result => arg -> result
-tref_ = term "tref"
+tref_ :: Monad m => [Attribute] -> HtmlT m ()
+tref_ = with $ makeElementNoContent "tref" 
 
 -- | @tspan@ element
-tspan_ :: Term arg result => arg -> result
-tspan_ = term "tspan"
+tspan_ :: Monad m => [Attribute] -> HtmlT m ()
+tspan_ = with $ makeElementNoContent "tspan" 
 
 -- | @use@ element
-use_ :: Term arg result => arg -> result
-use_ = term "use"
+use_ :: Monad m => [Attribute] -> HtmlT m ()
+use_ = with $ makeElementNoContent "use" 
 
 -- | @view@ element
-view_ :: Term arg result => arg -> result
-view_ = term "view"
+view_ :: Monad m => [Attribute] -> HtmlT m ()
+view_ = with $ makeElementNoContent "view" 
 
 -- | @vkern@ element
-vkern_ :: Term arg result => arg -> result
-vkern_ = term "vkern"
+vkern_ :: Monad m => [Attribute] -> HtmlT m ()
+vkern_ = with $ makeElementNoContent "vkern" 
