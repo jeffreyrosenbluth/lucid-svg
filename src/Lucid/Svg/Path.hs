@@ -3,26 +3,9 @@
 
 module Lucid.Svg.Path where
 
-import           Lucid.Base
-import           Lucid.Svg.Elements
-
-import           Data.Functor.Identity
 import           Data.Text             (Text)
 import qualified Data.Text             as T
 
-type Svg = HtmlT Identity
-
--- | @DOCTYPE@ element
-doctype_ :: Monad m => HtmlT m ()
-doctype_ = makeElementNoEnd "?xml version=\"1.0\" encoding=\"UTF-8\"?\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n    \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n" 
-
--- | @svg@ element + svg 1.1 attributes
-svg11_:: Term [Attribute] (s -> t) => s -> t
-svg11_ m = svg_ [ makeAttribute "xmlns" "http://www.w3.org/2000/svg"
-                , makeAttribute "xmlns:xlink" "http://www.w3.org/1999/xlink"]
-           m
-
--- | SVG Text components
 --   moveto (absolute)
 mA :: Text -> Text -> Text
 mA x y = T.concat ["M " ,x, ",", y, " "]
@@ -79,18 +62,20 @@ qA cx cy x y = T.concat ["Q ", cx, ",", cy, " ", x, ",", y, " "]
 qR :: Text -> Text -> Text -> Text -> Text
 qR dcx dcy dx dy = T.concat ["q ", dcx, ",", dcy, " ", dx, ",", dy, " " ]
 
--- | Smooth Quadratic Bezier curve (abslute)
+-- | Smooth Quadratic Bezier curve (absolute)
 tA  :: Text -> Text -> Text
 tA x y = T.concat ["T ", " ", x, ",", y, " "]
 
 -- | Smooth Quadratic Bezier curve (relative)
 tR :: Text -> Text -> Text
-tR x y = T.concat [ "t ", " ", x, ",", y, " "]
+tR x y = T.concat [ "t ", x, ",", y, " "]
 
+-- | Arc (absolute)
 aA :: Text -> Text -> Text -> Text -> Text -> Text -> Text -> Text
 aA rx ry xrot largeFlag sweepFlag x y =
   T.concat ["A ", rx, ",", ry, " ", xrot, " ", largeFlag, " ", sweepFlag, " ", x, " ", y, " "]
 
+-- | Arc (relative)
 aR :: Text -> Text -> Text -> Text -> Text -> Text -> Text -> Text
 aR rx ry xrot largeFlag sweepFlag x y =
   T.concat ["a ", rx, ",", ry, " ", xrot, " ", largeFlag, " ", sweepFlag, " ", x, " ", y, " "]

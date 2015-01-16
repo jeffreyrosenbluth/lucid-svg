@@ -4,7 +4,8 @@ import Lucid.Svg
 import Lucid.Base
 
 svg :: Html () -> Html ()
-svg content =
+svg content = do
+  doctype_
   with (svg11_ content) [version_ "1.1", width_ "300" , height_ "200"]
 
 contents :: Html ()
