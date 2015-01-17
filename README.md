@@ -24,4 +24,4 @@ main = do
   print $ svg contents
 ```
 
-[![SVG](http://i.imgur.com/dXu84xR.png))
+![SVG](http://i.imgur.com/dXu84xR.png)
