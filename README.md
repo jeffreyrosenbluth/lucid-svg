@@ -5,6 +5,8 @@ Simple DSL for writing SVG, base on lucid
 ## Example
 
 ``` haskell
+{-# LANGUAGE OverloadedStrings #-}
+
 import Lucid.Svg
  
 svg :: Svg () -> Svg ()
