@@ -1,14 +1,13 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 import Lucid.Svg
-import Lucid.Base
 
-svg :: Html () -> Html ()
+svg :: Svg () -> Svg ()
 svg content = do
   doctype_
   with (svg11_ content) [version_ "1.1", width_ "300" , height_ "200"]
 
-contents :: Html ()
+contents :: Svg ()
 contents = do
   rect_ [width_ "100%", height_ "100%", fill_ "red"]
   circle_ [cx_ "150", cy_ "100", r_ "80", fill_ "green"]

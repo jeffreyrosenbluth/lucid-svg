@@ -46,7 +46,7 @@ type Svg = SvgT Identity
 -- 'path_', 'circle_', 'color_', 'scale_'
 --
 -- Note: If you're testing in the REPL you need to add a type annotation to
--- indicate that you want HTML. In normal code your top-level
+-- indicate that you want SVG. In normal code your top-level
 -- declaration signatures handle that.
 --
 -- Plain text is written using the @OverloadedStrings@ and
@@ -66,7 +66,7 @@ type Svg = SvgT Identity
 -- <text>Hello</text><text>SVG</text>
 --
 -- Attributes are set by providing an argument list. In contrast to HTML
--- many SVG elements have no content, only attributes
+-- many SVG elements have no content, only attributes.
 --
 -- >>> rect_ [width_ "100%", height_ "100%", fill_ "red"] :: Svg ()
 -- <rect height="100%" width="100%" fill="red"></rect>
@@ -78,21 +78,41 @@ type Svg = SvgT Identity
 -- <mask mask="attribute">element</mask>
 --
 -- Note: The following element and attribute names overlap and cannot be
--- handled polymorphically since doing so would create confilicting functional
+-- handled polymorphically since doing so would create conflicting functional
 -- dependencies. The unqualifed name refers to the element.
 -- We qualify the attribute name as @A@. For example, 'path_' and 'A.path_'.
+--            
 -- 'colorProfile_', 'cursor_', 'filter_', 'path_', and 'style_'
 --
 -- Path data can be constructed using the functions in 'Lucid.Svg.Path'
 -- and combined monoidally:
 --
 -- @
--- path_ $ [ d_ ( mA "10" "80"
---             <> qA "52.5" "10" "95" "80"
---             <> tA "180" "80"
---             <> z )
---           , stroke_ "blue"
---           , fill_ "orange"
---           ]
+-- path_ (
+--   [ d_ (mA "10" "80" <> qA "52.5" "10" "95" "80" <> tA "180" "80" <> z)
+--   , stroke_ "blue"
+--   , fill_ "orange"
+--   ])
 -- @
 -- > <path d="M 10,80 Q 52.5,10 95,80 T 180,80 Z" stroke="blue" fill="orange"></path>
+--
+-- __A slightly longer example__:
+--  
+-- > import Lucid.Svg
+-- > 
+-- > svg :: Svg () -> Svg ()
+-- > svg content = do
+-- >   doctype_
+-- >   with (svg11_ content) [version_ "1.1", width_ "300" , height_ "200"]
+-- > 
+-- > contents :: Svg ()
+-- > contents = do
+-- >   rect_ [width_ "100%", height_ "100%", fill_ "red"]
+-- >   circle_ [cx_ "150", cy_ "100", r_ "80", fill_ "green"]
+-- >   text_ [x_ "150", y_ "125", fontSize_ "60", textAnchor_ "middle", fill_ "white"] "SVG"
+-- > 
+-- > 
+-- > main :: IO ()
+-- > main = do
+-- >   print $ svg contents
+-- <<http://i.imgur.com/dXu84xR.png>>
