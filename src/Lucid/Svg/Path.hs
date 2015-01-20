@@ -3,82 +3,89 @@
 
 module Lucid.Svg.Path where
 
-import           Data.Text             (Text)
+import           Data.Text             (Text, pack)
 import qualified Data.Text             as T
 
---   moveto (absolute)
-mA :: Text -> Text -> Text
-mA x y = T.concat ["M " ,x, ",", y, " "]
+tt :: Show a => a -> Text
+tt = pack . show
+
+-- | moveto (absolute)
+mA :: Show a =>  a -> a -> Text
+mA x y = T.concat ["M " ,tt x, ",", tt y, " "]
 
 -- | moveto (relative)
-mR :: Text -> Text -> Text
-mR dx dy = T.concat ["m ", dx, ",", dy, " "]
+mR :: Show a =>  a -> a -> Text
+mR dx dy = T.concat ["m ", tt dx, ",", tt dy, " "]
 
 -- | lineto (absolute)
-lA :: Text -> Text -> Text
-lA x y = T.concat ["L ", x, ",", y, " "]
+lA :: Show a =>  a -> a -> Text
+lA x y = T.concat ["L ", tt x, ",", tt y, " "]
 
 -- | lineto (relative)
-lR :: Text -> Text -> Text
-lR dx dy = T.concat ["l ", dx, ",", dy, " "]
+lR :: Show a =>  a -> a -> Text
+lR dx dy = T.concat ["l ", tt dx, ",", tt dy, " "]
 
 -- | horizontal lineto (absolute)
-hA :: Text -> Text
-hA x = T.concat ["H ", x, " "]
+hA :: Show a =>  a -> Text
+hA x = T.concat ["H ", tt x, " "]
 
 -- | horizontal lineto (relative)
-hR :: Text -> Text
-hR dx = T.concat ["h ", dx, " "]
+hR :: Show a =>  a -> Text
+hR dx = T.concat ["h ", tt dx, " "]
 
 -- | vertical lineto (absolute)
-vA :: Text -> Text
-vA y = T.concat ["V ", y, " "]
+vA :: Show a =>  a -> Text
+vA y = T.concat ["V ", tt y, " "]
 
 -- | vertical lineto (relative)
-vR :: Text -> Text
-vR dy = T.concat ["v ", dy, " "]
+vR :: Show a =>  a -> Text
+vR dy = T.concat ["v ", tt dy, " "]
 
 -- | Cubic Bezier curve (absolute)
-cA :: Text -> Text -> Text -> Text -> Text -> Text -> Text
-cA c1x c1y c2x c2y x y = T.concat ["C ", c1x, ",", c1y, " ", c2x, ",", c2y, " ", x, " ", y]
+cA :: Show a =>  a -> a -> a -> a -> a -> a -> Text
+cA c1x c1y c2x c2y x y = T.concat [ "C ", tt c1x, ",", tt c1y, " ", tt c2x, ","
+                                  , tt c2y, " ", tt x, " ", tt y]
 
 -- | Cubic Bezier curve (relative)
-cR :: Text -> Text -> Text -> Text -> Text -> Text -> Text
-cR dc1x dc1y dc2x dc2y dx dy = T.concat ["c ", dc1x, ",", dc1y, " ", dc2x, ",", dc2y, " ", dx, " ", dy]
+cR :: Show a =>  a -> a -> a -> a -> a -> a -> Text
+cR dc1x dc1y dc2x dc2y dx dy = T.concat [ "c ", tt dc1x, ",", tt dc1y, " ", tt dc2x
+                                        , ",", tt dc2y, " ", tt dx, " ", tt dy]
 
 -- | Smooth Cubic Bezier curve (absolute)
-sA :: Text -> Text -> Text -> Text -> Text
-sA c2x c2y x y = T.concat ["S ", c2x, ",", c2y, " ", x, ",", y, " "]
+sA :: Show a =>  a -> a -> a -> a -> Text
+sA c2x c2y x y = T.concat ["S ", tt c2x, ",", tt c2y, " ", tt x, ",", tt y, " "]
 
 -- | Smooth Cubic Bezier curve (relative)
-sR :: Text -> Text -> Text -> Text -> Text
-sR dc2x dc2y dx dy = T.concat ["s ", dc2x, ",", dc2y, " ", dx, ",", dy, " "]
+sR :: Show a =>  a -> a -> a -> a -> Text
+sR dc2x dc2y dx dy = T.concat ["s ", tt dc2x, ",", tt dc2y, " ", tt dx, ",", tt dy, " "]
 
 -- | Quadratic Bezier curve (absolute)
-qA :: Text -> Text -> Text -> Text -> Text
-qA cx cy x y = T.concat ["Q ", cx, ",", cy, " ", x, ",", y, " "]
+qA :: Show a =>  a -> a -> a -> a -> Text
+qA cx cy x y = T.concat ["Q ", tt cx, ",", tt cy, " ", tt x, ",", tt y, " "]
 
 -- | Quadratic Bezier curve (relative)
-qR :: Text -> Text -> Text -> Text -> Text
-qR dcx dcy dx dy = T.concat ["q ", dcx, ",", dcy, " ", dx, ",", dy, " " ]
+qR :: Show a =>  a -> a -> a -> a -> Text
+qR dcx dcy dx dy = T.concat ["q ", tt dcx, ",", tt dcy, " ", tt dx, ",", tt dy, " " ]
 
 -- | Smooth Quadratic Bezier curve (absolute)
-tA  :: Text -> Text -> Text
-tA x y = T.concat ["T ", " ", x, ",", y, " "]
+tA  :: Show a =>  a -> a -> Text
+tA x y = T.concat ["T ", " ", tt x, ",", tt y, " "]
 
 -- | Smooth Quadratic Bezier curve (relative)
-tR :: Text -> Text -> Text
-tR x y = T.concat [ "t ", x, ",", y, " "]
+tR :: Show a =>  a -> a -> Text
+tR x y = T.concat [ "t ", tt x, ",", tt y, " "]
 
 -- | Arc (absolute)
-aA :: Text -> Text -> Text -> Text -> Text -> Text -> Text -> Text
+aA :: Show a =>  a -> a -> a -> a -> a -> a -> a -> Text
 aA rx ry xrot largeFlag sweepFlag x y =
-  T.concat ["A ", rx, ",", ry, " ", xrot, " ", largeFlag, " ", sweepFlag, " ", x, " ", y, " "]
+  T.concat [ "A ", tt rx, ",", tt ry, " ", tt xrot, " ", tt largeFlag
+           , " ", tt sweepFlag, " ", tt x, " ", tt y, " "]
 
 -- | Arc (relative)
-aR :: Text -> Text -> Text -> Text -> Text -> Text -> Text -> Text
+aR :: Show a =>  a -> a -> a -> a -> a -> a -> a -> Text
 aR rx ry xrot largeFlag sweepFlag x y =
-  T.concat ["a ", rx, ",", ry, " ", xrot, " ", largeFlag, " ", sweepFlag, " ", x, " ", y, " "]
+  T.concat [ "a ", tt rx, ",", tt ry, " ", tt xrot, " ", tt largeFlag
+           , " ", tt sweepFlag, " ", tt x, " ", tt y, " "]
 
 -- | closepath
 z :: Text
@@ -86,29 +93,30 @@ z = "Z"
 
 -- | SVG Transform components
 -- | Specifies a translation by @x@ and @y@
-translate :: Text -> Text -> Text
-translate x y = T.concat ["translate(", x, " ", y, ")"]
+translate :: Show a =>  a -> a -> Text
+translate x y = T.concat ["translate(", tt x, " ", tt y, ")"]
 
 -- | Specifies a scale operation by @x@ and @y@
-scale :: Text -> Text -> Text
-scale x y = T.concat ["scale(", x, " ", y, ")"]
+scale :: Show a =>  a -> a -> Text
+scale x y = T.concat ["scale(", tt x, " ", tt y, ")"]
 
 -- | Specifies a rotation by @rotate-angle@ degrees
-rotate :: Text -> Text
-rotate angle = T.concat ["rotate(", angle, ")"]
+rotate :: Show a =>  a -> Text
+rotate angle = T.concat ["rotate(", tt angle, ")"]
 
 -- | Specifies a rotation by @rotate-angle@ degrees about the given time @rx,ry@
-rotateAround :: Text -> Text -> Text -> Text
-rotateAround angle rx ry = T.concat ["rotate(", angle, ",", rx, ",", ry, ")"]
+rotateAround :: Show a =>  a -> a -> a -> Text
+rotateAround angle rx ry = T.concat ["rotate(", tt angle, ",", tt rx, ",", tt ry, ")"]
 
 -- | Skew tansformation along x-axis
-skewX :: Text -> Text
-skewX angle = T.concat ["skewX(", angle, ")"]
+skewX :: Show a =>  a -> Text
+skewX angle = T.concat ["skewX(", tt angle, ")"]
 
 -- | Skew tansformation along y-axis
-skewY :: Text -> Text
-skewY angle = T.concat ["skewY(", angle, ")"]
+skewY :: Show a =>  a -> Text
+skewY angle = T.concat ["skewY(", tt angle, ")"]
 
 -- | Specifies a transform in the form of a transformation matrix
-matrix :: Text -> Text -> Text -> Text -> Text -> Text -> Text
-matrix a b c_ d e f =  T.concat ["matrix(",  a, ",",  b, ",",  c_, ",",  d, ",", e, ",",  f, ")"]
+matrix :: Show a =>  a -> a -> a -> a -> a -> a -> Text
+matrix a b c d e f =  T.concat [ "matrix(", tt a, ",", tt b, ",",  tt c
+                               , ",",  tt d, ",", tt e, ",",  tt f, ")"]
