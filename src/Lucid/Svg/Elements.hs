@@ -1,5 +1,16 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE FlexibleContexts          #-}
+{-# LANGUAGE FlexibleContexts  #-}
+
+-------------------------------------------------------------------------------
+-- |
+-- Module      :  Lucid.Svg.Elements
+-- Copyright   :  (c) 2015 Jeffrey Rosenbluth
+-- License     :  BSD-style (see LICENSE)
+-- Maintainer  :  jeffrey.rosenbluth@gmail.com
+--
+-- SVG elements.
+--
+-------------------------------------------------------------------------------
 
 module Lucid.Svg.Elements where 
 
@@ -61,9 +72,9 @@ animateTransform_ = with $ makeElementNoContent "animateTransform"
 circle_ :: Monad m => [Attribute] -> SvgT m ()
 circle_ = with $ makeElementNoContent "circle" 
 
--- | @clippath@ element
-clippath_ :: Term arg result => arg -> result
-clippath_ = term "clippath"
+-- | @clipPath@ element or attribute
+clipPath_ :: Term arg result => arg -> result
+clipPath_ = term "clippath"
 
 -- | @colorProfile@ element 
 colorProfile_ :: Monad m => [Attribute] -> SvgT m ()

@@ -1,5 +1,15 @@
 {-# OPTIONS -fno-warn-unused-imports #-}
 
+-------------------------------------------------------------------------------
+-- |
+-- Module      :  Lucid.Svg
+-- Copyright   :  (c) 2015 Jeffrey Rosenbluth
+-- License     :  BSD-style (see LICENSE)
+-- Maintainer  :  jeffrey.rosenbluth@gmail.com
+--
+-- DSL for creating SVG.
+--
+-------------------------------------------------------------------------------
 module Lucid.Svg
   ( -- * Intro
     -- $intro

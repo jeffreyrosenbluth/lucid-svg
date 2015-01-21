@@ -1,4 +1,15 @@
-{-# LANGUAGE OverloadedStrings         #-}
+{-# LANGUAGE OverloadedStrings #-}
+ 
+-------------------------------------------------------------------------------
+-- |
+-- Module      :  Lucid.Svg.Attributes
+-- Copyright   :  (c) 2015 Jeffrey Rosenbluth
+-- License     :  BSD-style (see LICENSE)
+-- Maintainer  :  jeffrey.rosenbluth@gmail.com
+--
+-- SVG Attributes.
+--
+-------------------------------------------------------------------------------
 
 module Lucid.Svg.Attributes where 
 
@@ -92,10 +103,6 @@ class_ = makeAttribute "class"
 -- | The @clip@ attribute.
 clip_ :: Text -> Attribute
 clip_ = makeAttribute "clip"
-
--- | The @clipPath@ attribute.
-clipPath_ :: Text -> Attribute
-clipPath_ = makeAttribute "clip-path"
 
 -- | The @clipRule@ attribute.
 clipRule_ :: Text -> Attribute
