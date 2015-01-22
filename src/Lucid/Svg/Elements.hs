@@ -14,7 +14,6 @@
 
 module Lucid.Svg.Elements where 
 
-import Data.Text (Text)
 import Lucid.Base
 
 -- | A type alias for the 'SvgT m a' monad transformer.
