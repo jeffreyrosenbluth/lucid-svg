@@ -12,7 +12,7 @@ import Lucid.Svg
 svg :: Svg () -> Svg ()
 svg content = do
   doctype_
-  with (svg11_ content) [version_ "1.1", width_ "300" , height_ "200"]
+  with (svg11_ content) [width_ "300" , height_ "200"]
 
 contents :: Svg ()
 contents = do
