@@ -1,5 +1,5 @@
 name:                lucid-svg
-version:             0.2.1
+version:             0.3
 synopsis:            DSL for SVG using lucid for HTML
 homepage:            http://github.com/jeffreyrosenbluth/lucid-svg.git
 license:             BSD3
