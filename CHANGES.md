@@ -1,3 +1,8 @@
+0.2.1 (27 Jan 2015)
+---------------------
+
+- Expose `Attribute(..)` constructor from Lucid.Base.
+
 0.2.0.2 (27 Jan 2015)
 ---------------------
 

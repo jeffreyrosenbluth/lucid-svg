@@ -31,7 +31,7 @@ module Lucid.Svg
   , evalHtmlT
   , runHtmlT
     -- ** Types
-  , Attribute
+  , Attribute(..)
     -- ** Classes
     -- $overloaded
   , Term(..)
