@@ -1,3 +1,8 @@
+0.4 (27 Jan 2015)
+---------------------
+
+- Add `prettyText` function for pretty printing SVG.
+
 0.3 (27 Jan 2015)
 ---------------------
 

@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedStrings       #-}
+
 {-# OPTIONS -fno-warn-unused-imports #-}
 
 -------------------------------------------------------------------------------
@@ -15,6 +17,8 @@ module Lucid.Svg
     -- $intro
     -- * Types
     Svg
+    -- * Rendering
+  , prettyText
     -- * Re-exports
   , module Lucid.Svg.Path
   , module Lucid.Svg.Elements
@@ -39,15 +43,41 @@ module Lucid.Svg
   , With(..)
   ) where
 
-import Data.Functor.Identity
-import Lucid.Base
-import qualified Lucid.Svg.Attributes as A
-import Lucid.Svg.Attributes hiding (colorProfile_, cursor_, filter_, path_, style_)
-import Lucid.Svg.Elements
-import Lucid.Svg.Path
+import           Data.Functor.Identity
+import           Data.Int               (Int64)
+import           Data.Monoid
+import           Data.Text.Lazy
+import           Data.Text.Lazy         as LT
+import           Data.Text.Lazy.Builder as B
+import           Lucid.Base
+import qualified Lucid.Svg.Attributes   as A
+import           Lucid.Svg.Attributes   hiding (colorProfile_, cursor_, filter_, path_, style_)
+import           Lucid.Svg.Elements
+import           Lucid.Svg.Path
 
 type Svg = SvgT Identity
 
+prettyText :: Svg a -> Text
+prettyText svg = B.toLazyText $ go (-1) text
+  where
+    text = renderText svg
+    go :: Int64 -> Text -> B.Builder
+    go n t
+      | isPrefixOf "<?" t = "<?" <> go n (LT.drop 2 t)
+      | isPrefixOf "<!" t = "<!" <> go n (LT.drop 2 t)
+      | isPrefixOf "</" t = "\n" <> (B.fromLazyText $ LT.replicate n "  ")
+                                 <> "</"
+                                 <> go (n - 1) (LT.drop 2 t)
+
+      | isPrefixOf "<"  t = "\n" <> (B.fromLazyText $ LT.replicate (n + 1) "  ")
+                                 <> B.singleton '<'
+                                 <> go (n + 1) (LT.drop 1 t)
+
+      | isPrefixOf "/>" t = "/>" <> go (n - 1) (LT.drop 2 t)
+
+      | not . LT.null $ t = (B.singleton $ LT.head t) <> go n (LT.drop 1 t)
+      | otherwise         = mempty
+                     
 -- $intro
 --
 -- SVG elements and attributes in Lucid-Svg are written with a postfix ‘@_@’. 
