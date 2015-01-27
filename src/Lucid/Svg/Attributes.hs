@@ -17,8 +17,8 @@ import Lucid.Base
 import Data.Text (Text)
 
 -- | The @accentHeight@ attribute.
-accentHeight_ :: Text -> Attribute
-accentHeight_ = makeAttribute "accent-height"
+accent_height_ :: Text -> Attribute
+accent_height_ = makeAttribute "accent-height"
 
 -- | The @accumulate@ attribute.
 accumulate_ :: Text -> Attribute
@@ -29,8 +29,8 @@ additive_ :: Text -> Attribute
 additive_ = makeAttribute "additive"
 
 -- | The @alignmentBaseline@ attribute.
-alignmentBaseline_ :: Text -> Attribute
-alignmentBaseline_ = makeAttribute "alignment-baseline"
+alignment_baseline_ :: Text -> Attribute
+alignment_baseline_ = makeAttribute "alignment-baseline"
 
 -- | The @alphabetic@ attribute.
 alphabetic_ :: Text -> Attribute
@@ -41,8 +41,8 @@ amplitude_ :: Text -> Attribute
 amplitude_ = makeAttribute "amplitude"
 
 -- | The @arabicForm@ attribute.
-arabicForm_ :: Text -> Attribute
-arabicForm_ = makeAttribute "arabic-form"
+arabic_form_ :: Text -> Attribute
+arabic_form_ = makeAttribute "arabic-form"
 
 -- | The @ascent@ attribute.
 ascent_ :: Text -> Attribute
