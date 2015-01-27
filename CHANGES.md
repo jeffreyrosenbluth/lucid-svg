@@ -2,7 +2,7 @@
 ---------------------
 
  - Change names of attribute functions to more closely match SVG spec.
-   For example: SVG's cap-height is lucid-svg `cap_height_.
+   For example: SVG's cap-height is lucid-svg `cap_height`_.
    
 0.2.1 (27 Jan 2015)
 ---------------------
