@@ -68,7 +68,7 @@ circle_ = with $ makeXmlElementNoEnd "circle"
 
 -- | @clipPath@ element or attribute
 clipPath_ :: Term arg result => arg -> result
-clipPath_ = term "clippath"
+clipPath_ = term "clipPath"
 
 -- | @colorProfile@ element 
 colorProfile_ :: Monad m => [Attribute] -> SvgT m ()

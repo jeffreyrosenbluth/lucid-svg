@@ -69,8 +69,8 @@ baseprofile_ :: Text -> Attribute
 baseprofile_ = makeAttribute "baseprofile"
 
 -- | The @baselineShift@ attribute.
-baselineShift_ :: Text -> Attribute
-baselineShift_ = makeAttribute "baseline-shift"
+baseline_shift_ :: Text -> Attribute
+baseline_shift_ = makeAttribute "baseline-shift"
 
 -- | The @bbox@ attribute.
 bbox_ :: Text -> Attribute
@@ -93,8 +93,8 @@ calcMode_ :: Text -> Attribute
 calcMode_ = makeAttribute "calcMode"
 
 -- | The @capHeight@ attribute.
-capHeight_ :: Text -> Attribute
-capHeight_ = makeAttribute "cap-height"
+cap_height_ :: Text -> Attribute
+cap_height_ = makeAttribute "cap-height"
 
 -- | The @class@ attribute.
 class_ :: Text -> Attribute
@@ -104,9 +104,13 @@ class_ = makeAttribute "class"
 clip_ :: Text -> Attribute
 clip_ = makeAttribute "clip"
 
+-- | The @clip-path@ attribute.
+clip_path_ :: Text -> Attribute
+clip_path_ = makeAttribute "clip-path"
+
 -- | The @clipRule@ attribute.
-clipRule_ :: Text -> Attribute
-clipRule_ = makeAttribute "clip-rule"
+clip_rule_ :: Text -> Attribute
+clip_rule_ = makeAttribute "clip-rule"
 
 -- | The @clippathunits@ attribute.
 clipPathUnits_ :: Text -> Attribute
@@ -117,20 +121,20 @@ color_ :: Text -> Attribute
 color_ = makeAttribute "color"
 
 -- | The @colorInterpolation@ attribute.
-colorInterpolation_ :: Text -> Attribute
-colorInterpolation_ = makeAttribute "color-interpolation"
+color_interpolation_ :: Text -> Attribute
+color_interpolation_ = makeAttribute "color-interpolation"
 
 -- | The @colorInterpolationFilters@ attribute.
-colorInterpolationFilters_ :: Text -> Attribute
-colorInterpolationFilters_ = makeAttribute "color-interpolation-filters"
+color_interpolation_filters_ :: Text -> Attribute
+color_interpolation_filters_ = makeAttribute "color-interpolation-filters"
 
 -- | The @colorProfile@ attribute.
-colorProfile_ :: Text -> Attribute
-colorProfile_ = makeAttribute "color-profile"
+color_profile_ :: Text -> Attribute
+color_profile_ = makeAttribute "color-profile"
 
 -- | The @colorRendering@ attribute.
-colorRendering_ :: Text -> Attribute
-colorRendering_ = makeAttribute "color-rendering"
+color_rendering_ :: Text -> Attribute
+color_rendering_ = makeAttribute "color-rendering"
 
 -- | The @contentscripttype@ attribute.
 contentScriptType_ :: Text -> Attribute
@@ -177,8 +181,8 @@ divisor_ :: Text -> Attribute
 divisor_ = makeAttribute "divisor"
 
 -- | The @dominantBaseline@ attribute.
-dominantBaseline_ :: Text -> Attribute
-dominantBaseline_ = makeAttribute "dominant-baseline"
+dominant_baseline_ :: Text -> Attribute
+dominant_baseline_ = makeAttribute "dominant-baseline"
 
 -- | The @dur@ attribute.
 dur_ :: Text -> Attribute
@@ -201,8 +205,8 @@ elevation_ :: Text -> Attribute
 elevation_ = makeAttribute "elevation"
 
 -- | The @enableBackground@ attribute.
-enableBackground_ :: Text -> Attribute
-enableBackground_ = makeAttribute "enable-background"
+enable_background_ :: Text -> Attribute
+enable_background_ = makeAttribute "enable-background"
 
 -- | The @end@ attribute.
 end_ :: Text -> Attribute
@@ -221,12 +225,12 @@ fill_ :: Text -> Attribute
 fill_ = makeAttribute "fill"
 
 -- | The @fillOpacity@ attribute.
-fillOpacity_ :: Text -> Attribute
-fillOpacity_ = makeAttribute "fill-opacity"
+fill_opacity_ :: Text -> Attribute
+fill_opacity_ = makeAttribute "fill-opacity"
 
 -- | The @fillRule@ attribute.
-fillRule_ :: Text -> Attribute
-fillRule_ = makeAttribute "fill-rule"
+fill_rule_ :: Text -> Attribute
+fill_rule_ = makeAttribute "fill-rule"
 
 -- | The @filter@ attribute.
 filter_ :: Text -> Attribute
@@ -241,40 +245,40 @@ filterUnits_ :: Text -> Attribute
 filterUnits_ = makeAttribute "filterUnits"
 
 -- | The @floodColor@ attribute.
-floodColor_ :: Text -> Attribute
-floodColor_ = makeAttribute "flood-color"
+flood_color_ :: Text -> Attribute
+flood_color_ = makeAttribute "flood-color"
 
 -- | The @floodOpacity@ attribute.
-floodOpacity_ :: Text -> Attribute
-floodOpacity_ = makeAttribute "flood-opacity"
+flood_opacity_ :: Text -> Attribute
+flood_opacity_ = makeAttribute "flood-opacity"
 
 -- | The @fontFamily@ attribute.
-fontFamily_ :: Text -> Attribute
-fontFamily_ = makeAttribute "font-family"
+font_family_ :: Text -> Attribute
+font_family_ = makeAttribute "font-family"
 
 -- | The @fontSize@ attribute.
-fontSize_ :: Text -> Attribute
-fontSize_ = makeAttribute "font-size"
+font_size_ :: Text -> Attribute
+font_size_ = makeAttribute "font-size"
 
 -- | The @fontSizeAdjust@ attribute.
-fontSizeAdjust_ :: Text -> Attribute
-fontSizeAdjust_ = makeAttribute "font-size-adjust"
+font_size_adjust_ :: Text -> Attribute
+font_size_adjust_ = makeAttribute "font-size-adjust"
 
 -- | The @fontStretch@ attribute.
-fontStretch_ :: Text -> Attribute
-fontStretch_ = makeAttribute "font-stretch"
+font_stretch_ :: Text -> Attribute
+font_stretch_ = makeAttribute "font-stretch"
 
 -- | The @fontStyle@ attribute.
-fontStyle_ :: Text -> Attribute
-fontStyle_ = makeAttribute "font-style"
+font_style_ :: Text -> Attribute
+font_style_ = makeAttribute "font-style"
 
 -- | The @fontVariant@ attribute.
-fontVariant_ :: Text -> Attribute
-fontVariant_ = makeAttribute "font-variant"
+font_variant_ :: Text -> Attribute
+font_variant_ = makeAttribute "font-variant"
 
 -- | The @fontWeight@ attribute.
-fontWeight_ :: Text -> Attribute
-fontWeight_ = makeAttribute "font-weight"
+font_weight_ :: Text -> Attribute
+font_weight_ = makeAttribute "font-weight"
 
 -- | The @format@ attribute.
 format_ :: Text -> Attribute
@@ -301,16 +305,16 @@ g2_ :: Text -> Attribute
 g2_ = makeAttribute "g2"
 
 -- | The @glyphName@ attribute.
-glyphName_ :: Text -> Attribute
-glyphName_ = makeAttribute "glyph-name"
+glyph_name_ :: Text -> Attribute
+glyph_name_ = makeAttribute "glyph-name"
 
 -- | The @glyphOrientationHorizontal@ attribute.
-glyphOrientationHorizontal_ :: Text -> Attribute
-glyphOrientationHorizontal_ = makeAttribute "glyph-orientation-horizontal"
+glyph_orientation_horizontal_ :: Text -> Attribute
+glyph_orientation_horizontal_ = makeAttribute "glyph-orientation-horizontal"
 
 -- | The @glyphOrientationVertical@ attribute.
-glyphOrientationVertical_ :: Text -> Attribute
-glyphOrientationVertical_ = makeAttribute "glyph-orientation-vertical"
+glyph_orientation_vertical_ :: Text -> Attribute
+glyph_orientation_vertical_ = makeAttribute "glyph-orientation-vertical"
 
 -- | The @-- | The @gradienttransform@ attribute.
 gradientTransform_ :: Text -> Attribute
@@ -329,16 +333,16 @@ height_ :: Text -> Attribute
 height_ = makeAttribute "height"
 
 -- | The @horizAdvX@ attribute.
-horizAdvX_ :: Text -> Attribute
-horizAdvX_ = makeAttribute "horiz-adv-x"
+horiz_adv_x_ :: Text -> Attribute
+horiz_adv_x_ = makeAttribute "horiz-adv-x"
 
 -- | The @horizOriginX@ attribute.
-horizOriginX_ :: Text -> Attribute
-horizOriginX_ = makeAttribute "horiz-origin-x"
+horiz_origin_x_ :: Text -> Attribute
+horiz_origin_x_ = makeAttribute "horiz-origin-x"
 
 -- | The @horizOriginY@ attribute.
-horizOriginY_ :: Text -> Attribute
-horizOriginY_ = makeAttribute "horiz-origin-y"
+horiz_origin_y_ :: Text -> Attribute
+horiz_origin_y_ = makeAttribute "horiz-origin-y"
 
 -- | The @id@ attribute.
 id_ :: Text -> Attribute
@@ -349,8 +353,8 @@ ideographic_ :: Text -> Attribute
 ideographic_ = makeAttribute "ideographic"
 
 -- | The @imageRendering@ attribute.
-imageRendering_ :: Text -> Attribute
-imageRendering_ = makeAttribute "image-rendering"
+image_rendering_ :: Text -> Attribute
+image_rendering_ = makeAttribute "image-rendering"
 
 -- | The @in@ attribute.
 in_ :: Text -> Attribute
@@ -417,12 +421,12 @@ lengthAdjust_ :: Text -> Attribute
 lengthAdjust_ = makeAttribute "lengthAdjust"
 
 -- | The @letterSpacing@ attribute.
-letterSpacing_ :: Text -> Attribute
-letterSpacing_ = makeAttribute "letter-spacing"
+letter_spacing_ :: Text -> Attribute
+letter_spacing_ = makeAttribute "letter-spacing"
 
 -- | The @lightingColor@ attribute.
-lightingColor_ :: Text -> Attribute
-lightingColor_ = makeAttribute "lighting-color"
+lighting_color_ :: Text -> Attribute
+lighting_color_ = makeAttribute "lighting-color"
 
 -- | The @limitingconeangle@ attribute.
 limitingConeAngle_ :: Text -> Attribute
@@ -433,16 +437,16 @@ local_ :: Text -> Attribute
 local_ = makeAttribute "local"
 
 -- | The @markerEnd@ attribute.
-markerEnd_ :: Text -> Attribute
-markerEnd_ = makeAttribute "marker-end"
+marker_end_ :: Text -> Attribute
+marker_end_ = makeAttribute "marker-end"
 
 -- | The @markerMid@ attribute.
-markerMid_ :: Text -> Attribute
-markerMid_ = makeAttribute "marker-mid"
+marker_mid_ :: Text -> Attribute
+marker_mid_ = makeAttribute "marker-mid"
 
 -- | The @markerStart@ attribute.
-markerStart_ :: Text -> Attribute
-markerStart_ = makeAttribute "marker-start"
+marker_start_ :: Text -> Attribute
+marker_start_ = makeAttribute "marker-start"
 
 -- | The @markerheight@ attribute.
 markerHeight_ :: Text -> Attribute
@@ -605,20 +609,20 @@ overflow_ :: Text -> Attribute
 overflow_ = makeAttribute "overflow"
 
 -- | The @overlinePosition@ attribute.
-overlinePosition_ :: Text -> Attribute
-overlinePosition_ = makeAttribute "overline-position"
+overline_position_ :: Text -> Attribute
+overline_position_ = makeAttribute "overline-position"
 
 -- | The @overlineThickness@ attribute.
-overlineThickness_ :: Text -> Attribute
-overlineThickness_ = makeAttribute "overline-thickness"
+overline_thickness_ :: Text -> Attribute
+overline_thickness_ = makeAttribute "overline-thickness"
 
 -- | The @panose1@ attribute.
-panose1_ :: Text -> Attribute
-panose1_ = makeAttribute "panose-1"
+panose_1_ :: Text -> Attribute
+panose_1_ = makeAttribute "panose-1"
 
 -- | The @paint-order@ attribute.
-paintOrder_ :: Text -> Attribute
-paintOrder_ = makeAttribute "paint-order"
+paint_order_ :: Text -> Attribute
+paint_order_ = makeAttribute "paint-order"
 
 -- | The @path@ attribute.
 path_ :: Text -> Attribute
@@ -641,8 +645,8 @@ patternUnits_ :: Text -> Attribute
 patternUnits_ = makeAttribute "patternUnits"
 
 -- | The @pointerEvents@ attribute.
-pointerEvents_ :: Text -> Attribute
-pointerEvents_ = makeAttribute "pointer-events"
+pointer_events_ :: Text -> Attribute
+pointer_events_ = makeAttribute "pointer-events"
 
 -- | The @points@ attribute.
 points_ :: Text -> Attribute
@@ -689,8 +693,8 @@ refY_ :: Text -> Attribute
 refY_ = makeAttribute "refY"
 
 -- | The @renderingIntent@ attribute.
-renderingIntent_ :: Text -> Attribute
-renderingIntent_ = makeAttribute "rendering-intent"
+rendering_intent_ :: Text -> Attribute
+rendering_intent_ = makeAttribute "rendering-intent"
 
 -- | The @repeatcount@ attribute.
 repeatCount_ :: Text -> Attribute
@@ -737,8 +741,8 @@ seed_ :: Text -> Attribute
 seed_ = makeAttribute "seed"
 
 -- | The @shapeRendering@ attribute.
-shapeRendering_ :: Text -> Attribute
-shapeRendering_ = makeAttribute "shape-rendering"
+shape_rendering_ :: Text -> Attribute
+shape_rendering_ = makeAttribute "shape-rendering"
 
 -- | The @slope@ attribute.
 slope_ :: Text -> Attribute
@@ -781,20 +785,20 @@ stitchTiles_ :: Text -> Attribute
 stitchTiles_ = makeAttribute "stitchTiles"
 
 -- | The @stopColor@ attribute.
-stopColor_ :: Text -> Attribute
-stopColor_ = makeAttribute "stop-color"
+stop_color_ :: Text -> Attribute
+stop_color_ = makeAttribute "stop-color"
 
 -- | The @stopOpacity@ attribute.
-stopOpacity_ :: Text -> Attribute
-stopOpacity_ = makeAttribute "stop-opacity"
+stop_opacity_ :: Text -> Attribute
+stop_opacity_ = makeAttribute "stop-opacity"
 
 -- | The @strikethroughPosition@ attribute.
-strikethroughPosition_ :: Text -> Attribute
-strikethroughPosition_ = makeAttribute "strikethrough-position"
+strikethrough_position_ :: Text -> Attribute
+strikethrough_position_ = makeAttribute "strikethrough-position"
 
 -- | The @strikethroughThickness@ attribute.
-strikethroughThickness_ :: Text -> Attribute
-strikethroughThickness_ = makeAttribute "strikethrough-thickness"
+strikethrough_thickness_ :: Text -> Attribute
+strikethrough_thickness_ = makeAttribute "strikethrough-thickness"
 
 -- | The @string@ attribute.
 string_ :: Text -> Attribute
@@ -805,32 +809,32 @@ stroke_ :: Text -> Attribute
 stroke_ = makeAttribute "stroke"
 
 -- | The @strokeDasharray@ attribute.
-strokeDasharray_ :: Text -> Attribute
-strokeDasharray_ = makeAttribute "stroke-dasharray"
+stroke_dasharray_ :: Text -> Attribute
+stroke_dasharray_ = makeAttribute "stroke-dasharray"
 
 -- | The @strokeDashoffset@ attribute.
-strokeDashoffset_ :: Text -> Attribute
-strokeDashoffset_ = makeAttribute "stroke-dashoffset"
+stroke_dashoffset_ :: Text -> Attribute
+stroke_dashoffset_ = makeAttribute "stroke-dashoffset"
 
 -- | The @strokeLinecap@ attribute.
-strokeLinecap_ :: Text -> Attribute
-strokeLinecap_ = makeAttribute "stroke-linecap"
+stroke_linecap_ :: Text -> Attribute
+stroke_linecap_ = makeAttribute "stroke-linecap"
 
 -- | The @strokeLinejoin@ attribute.
-strokeLinejoin_ :: Text -> Attribute
-strokeLinejoin_ = makeAttribute "stroke-linejoin"
+stroke_linejoin_ :: Text -> Attribute
+stroke_linejoin_ = makeAttribute "stroke-linejoin"
 
 -- | The @strokeMiterlimit@ attribute.
-strokeMiterlimit_ :: Text -> Attribute
-strokeMiterlimit_ = makeAttribute "stroke-miterlimit"
+stroke_miterlimit_ :: Text -> Attribute
+stroke_miterlimit_ = makeAttribute "stroke-miterlimit"
 
 -- | The @strokeOpacity@ attribute.
-strokeOpacity_ :: Text -> Attribute
-strokeOpacity_ = makeAttribute "stroke-opacity"
+stroke_opacity_ :: Text -> Attribute
+stroke_opacity_ = makeAttribute "stroke-opacity"
 
 -- | The @strokeWidth@ attribute.
-strokeWidth_ :: Text -> Attribute
-strokeWidth_ = makeAttribute "stroke-width"
+stroke_width_ :: Text -> Attribute
+stroke_width_ = makeAttribute "stroke-width"
 
 -- | The @style@ attribute.
 style_ :: Text -> Attribute
@@ -861,16 +865,16 @@ targetY_ :: Text -> Attribute
 targetY_ = makeAttribute "targetY"
 
 -- | The @textAnchor@ attribute.
-textAnchor_ :: Text -> Attribute
-textAnchor_ = makeAttribute "text-anchor"
+text_anchor_ :: Text -> Attribute
+text_anchor_ = makeAttribute "text-anchor"
 
 -- | The @textDecoration@ attribute.
-textDecoration_ :: Text -> Attribute
-textDecoration_ = makeAttribute "text-decoration"
+text_decoration_ :: Text -> Attribute
+text_decoration_ = makeAttribute "text-decoration"
 
 -- | The @textRendering@ attribute.
-textRendering_ :: Text -> Attribute
-textRendering_ = makeAttribute "text-rendering"
+text_rendering_ :: Text -> Attribute
+text_rendering_ = makeAttribute "text-rendering"
 
 -- | The @textlength@ attribute.
 textLength_ :: Text -> Attribute
@@ -897,44 +901,44 @@ u2_ :: Text -> Attribute
 u2_ = makeAttribute "u2"
 
 -- | The @underlinePosition@ attribute.
-underlinePosition_ :: Text -> Attribute
-underlinePosition_ = makeAttribute "underline-position"
+underline_position_ :: Text -> Attribute
+underline_position_ = makeAttribute "underline-position"
 
 -- | The @underlineThickness@ attribute.
-underlineThickness_ :: Text -> Attribute
-underlineThickness_ = makeAttribute "underline-thickness"
+underline_thickness_ :: Text -> Attribute
+underline_thickness_ = makeAttribute "underline-thickness"
 
 -- | The @unicode@ attribute.
 unicode_ :: Text -> Attribute
 unicode_ = makeAttribute "unicode"
 
 -- | The @unicodeBidi@ attribute.
-unicodeBidi_ :: Text -> Attribute
-unicodeBidi_ = makeAttribute "unicode-bidi"
+unicode_bidi_ :: Text -> Attribute
+unicode_bidi_ = makeAttribute "unicode-bidi"
 
 -- | The @unicodeRange@ attribute.
-unicodeRange_ :: Text -> Attribute
-unicodeRange_ = makeAttribute "unicode-range"
+unicode_range_ :: Text -> Attribute
+unicode_range_ = makeAttribute "unicode-range"
 
 -- | The @unitsPerEm@ attribute.
-unitsPerEm_ :: Text -> Attribute
-unitsPerEm_ = makeAttribute "units-per-em"
+units_per_em_ :: Text -> Attribute
+units_per_em_ = makeAttribute "units-per-em"
 
 -- | The @vAlphabetic@ attribute.
-vAlphabetic_ :: Text -> Attribute
-vAlphabetic_ = makeAttribute "v-alphabetic"
+v_alphabetic_ :: Text -> Attribute
+v_alphabetic_ = makeAttribute "v-alphabetic"
 
 -- | The @vHanging@ attribute.
-vHanging_ :: Text -> Attribute
-vHanging_ = makeAttribute "v-hanging"
+v_hanging_ :: Text -> Attribute
+v_hanging_ = makeAttribute "v-hanging"
 
 -- | The @vIdeographic@ attribute.
-vIdeographic_ :: Text -> Attribute
-vIdeographic_ = makeAttribute "v-ideographic"
+v_ideographic_ :: Text -> Attribute
+v_ideographic_ = makeAttribute "v-ideographic"
 
 -- | The @vMathematical@ attribute.
-vMathematical_ :: Text -> Attribute
-vMathematical_ = makeAttribute "v-mathematical"
+v_mathematical_ :: Text -> Attribute
+v_mathematical_ = makeAttribute "v-mathematical"
 
 -- | The @values@ attribute.
 values_ :: Text -> Attribute
@@ -945,16 +949,16 @@ version_ :: Text -> Attribute
 version_ = makeAttribute "version"
 
 -- | The @vertAdvY@ attribute.
-vertAdvY_ :: Text -> Attribute
-vertAdvY_ = makeAttribute "vert-adv-y"
+vert_adv_y_ :: Text -> Attribute
+vert_adv_y_ = makeAttribute "vert-adv-y"
 
 -- | The @vertOriginX@ attribute.
-vertOriginX_ :: Text -> Attribute
-vertOriginX_ = makeAttribute "vert-origin-x"
+vert_origin_x_ :: Text -> Attribute
+vert_origin_x_ = makeAttribute "vert-origin-x"
 
 -- | The @vertOriginY@ attribute.
-vertOriginY_ :: Text -> Attribute
-vertOriginY_ = makeAttribute "vert-origin-y"
+vert_origin_y_ :: Text -> Attribute
+vert_origin_y_ = makeAttribute "vert-origin-y"
 
 -- | The @viewbox@ attribute.
 viewBox_ :: Text -> Attribute
@@ -977,20 +981,20 @@ widths_ :: Text -> Attribute
 widths_ = makeAttribute "widths"
 
 -- | The @wordSpacing@ attribute.
-wordSpacing_ :: Text -> Attribute
-wordSpacing_ = makeAttribute "word-spacing"
+word_spacing_ :: Text -> Attribute
+word_spacing_ = makeAttribute "word-spacing"
 
 -- | The @writingMode@ attribute.
-writingMode_ :: Text -> Attribute
-writingMode_ = makeAttribute "writing-mode"
+writing_mode_ :: Text -> Attribute
+writing_mode_ = makeAttribute "writing-mode"
 
 -- | The @x@ attribute.
 x_ :: Text -> Attribute
 x_ = makeAttribute "x"
 
 -- | The @xHeight@ attribute.
-xHeight_ :: Text -> Attribute
-xHeight_ = makeAttribute "x-height"
+x_height_ :: Text -> Attribute
+x_height_ = makeAttribute "x-height"
 
 -- | The @x1@ attribute.
 x1_ :: Text -> Attribute
