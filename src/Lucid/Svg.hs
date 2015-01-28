@@ -51,7 +51,7 @@ import           Data.Text.Lazy         as LT
 import           Data.Text.Lazy.Builder as B
 import           Lucid.Base
 import qualified Lucid.Svg.Attributes   as A
-import           Lucid.Svg.Attributes   hiding (colorProfile_, cursor_, filter_, path_, style_)
+import           Lucid.Svg.Attributes   hiding (cursor_, filter_, path_, style_)
 import           Lucid.Svg.Elements
 import           Lucid.Svg.Path
 
