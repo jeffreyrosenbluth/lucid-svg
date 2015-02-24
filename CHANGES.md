@@ -1,3 +1,8 @@
+0.4.0.3 (24 Feb 2015)
+---------------------
+
+- Require lucid 2.9.2 (hashable instance for `Attribute`).
+
 0.4.0.2 (10 Feb 2015)
 ---------------------
 
