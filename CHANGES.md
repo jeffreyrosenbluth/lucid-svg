@@ -1,3 +1,9 @@
+0.5.0.0 (9 Jul 2015)
+---------------------
+
+- Functions in the `Path` module output numbers to 4 decimal places
+  using `Data.Text.Lazy.Builder.RealFloat (formatRealFloat)` instead of `show`.
+
 0.4.0.4 (9 Mar 2015)
 ---------------------
 
@@ -28,7 +34,7 @@
 
  - Change names of attribute functions to more closely match SVG spec.
    For example: SVG's cap-height is lucid-svg `cap_height`_.
-   
+
 0.2.1 (27 Jan 2015)
 ---------------------
 
