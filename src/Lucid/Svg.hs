@@ -58,26 +58,27 @@ import           Lucid.Svg.Path
 type Svg = SvgT Identity
 
 prettyText :: Svg a -> Text
-prettyText svg = B.toLazyText $ go (-1) text
-  where
+prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
+  where 
     text = renderText svg
-    go :: Int64 -> Text -> B.Builder
-    go n t
-      | isPrefixOf "<?" t = "<?" <> go n (LT.drop 2 t)
-      | isPrefixOf "<!" t = "<!" <> go n (LT.drop 2 t)
-      | isPrefixOf "</" t = "\n" <> (B.fromLazyText $ LT.replicate n "  ")
-                                 <> "</"
-                                 <> go (n - 1) (LT.drop 2 t)
-
-      | isPrefixOf "<"  t = "\n" <> (B.fromLazyText $ LT.replicate (n + 1) "  ")
-                                 <> B.singleton '<'
-                                 <> go (n + 1) (LT.drop 1 t)
-
-      | isPrefixOf "/>" t = "/>" <> go (n - 1) (LT.drop 2 t)
-
-      | not . LT.null $ t = (B.singleton $ LT.head t) <> go n (LT.drop 1 t)
-      | otherwise         = mempty
-                     
+    go c f Nothing n 
+      | c == '<' || c == '/' = f (Just c) n
+    go c f (Just '<') n 
+      | c == '?' = "<?" <> f Nothing n
+      | c == '!' = "<!" <> f Nothing n
+      | c == '/' = "\n"
+                    <> (B.fromLazyText $ LT.replicate n "  " )
+                    <> "</"
+                    <> f Nothing (n-1)
+      | otherwise = "\n"
+                    <> (B.fromLazyText $ LT.replicate (n+1)   "  " )
+                    <> "<"
+                    <> B.singleton c
+                    <> f Nothing (n+1)
+    go '>' f (Just _) n = "/>" <> f Nothing (n-1)
+    go c f s n =  s' <> B.singleton c <> f Nothing n
+      where  s' = maybe mempty B.singleton s
+    
 -- $intro
 --
 -- SVG elements and attributes in Lucid-Svg are written with a postfix ‘@_@’. 
