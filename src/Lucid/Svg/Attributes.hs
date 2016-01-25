@@ -13,7 +13,7 @@
 
 module Lucid.Svg.Attributes where
 
-import Lucid.Base
+import Lucid.Svg.Core
 import Data.Text (Text)
 
 -- | The @accentHeight@ attribute.

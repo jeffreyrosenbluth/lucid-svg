@@ -15,32 +15,13 @@
 module Lucid.Svg
   ( -- * Intro
     -- $intro
-    -- * Types
-    Svg
-    -- * Rendering
-  , prettyText
     -- * Re-exports
+    module Lucid.Svg.Core
   , module Lucid.Svg.Path
   , module Lucid.Svg.Elements
   , module Lucid.Svg.Attributes
-    -- * From Lucid.Base
-  , renderText
-  , renderBS
-  , renderTextT
-  , renderBST
-  , renderToFile
-    -- ** Running
-    -- $running
-  , execHtmlT
-  , evalHtmlT
-  , runHtmlT
-    -- ** Types
-  , Attribute(..)
-    -- ** Classes
-    -- $overloaded
-  , Term(..)
-  , ToHtml(..)
-  , With(..)
+  -- * Rendering
+  , prettyText
   ) where
 
 import           Data.Functor.Identity
@@ -49,21 +30,19 @@ import           Data.Monoid
 import           Data.Text.Lazy
 import           Data.Text.Lazy         as LT
 import           Data.Text.Lazy.Builder as B
-import           Lucid.Base
+import           Lucid.Svg.Core
 import qualified Lucid.Svg.Attributes   as A
 import           Lucid.Svg.Attributes   hiding (cursor_, filter_, path_, style_)
 import           Lucid.Svg.Elements
 import           Lucid.Svg.Path
 
-type Svg = SvgT Identity
-
-prettyText :: Svg a -> Text
+prettyText :: Element -> Text
 prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
-  where 
-    text = renderText svg
-    go c f Nothing n 
+  where
+    text = render svg
+    go c f Nothing n
       | c == '<' || c == '/' = f (Just c) n
-    go c f (Just '<') n 
+    go c f (Just '<') n
       | c == '?' = "<?" <> f Nothing n
       | c == '!' = "<!" <> f Nothing n
       | c == '/' = "\n"
@@ -78,10 +57,10 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
     go '>' f (Just _) n = "/>" <> f Nothing (n-1)
     go c f s n =  s' <> B.singleton c <> f Nothing n
       where  s' = maybe mempty B.singleton s
-    
+
 -- $intro
 --
--- SVG elements and attributes in Lucid-Svg are written with a postfix ‘@_@’. 
+-- SVG elements and attributes in Lucid-Svg are written with a postfix ‘@_@’.
 -- Some examples:
 --
 -- 'path_', 'circle_', 'color_', 'scale_'
@@ -91,7 +70,7 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 -- declaration signatures handle that.
 --
 -- Plain text is written using the @OverloadedStrings@ and
--- @ExtendedDefaultRules@ extensions, and is automatically escaped: 
+-- @ExtendedDefaultRules@ extensions, and is automatically escaped:
 --
 -- As in Lucid, elements nest by function application:
 --
@@ -122,7 +101,7 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 -- handled polymorphically since doing so would create conflicting functional
 -- dependencies. The unqualifed name refers to the element.
 -- We qualify the attribute name as @A@. For example, 'path_' and 'A.path_'.
---            
+--
 -- 'colorProfile_', 'cursor_', 'filter_', 'path_', and 'style_'
 --
 -- Path data can be constructed using the functions in 'Lucid.Svg.Path'
@@ -138,21 +117,21 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 -- > <path d="M 10,80 Q 52.5,10 95,80 T 180,80 Z" stroke="blue" fill="orange"></path>
 --
 -- __A slightly longer example__:
---  
+--
 -- > import Lucid.Svg
--- > 
+-- >
 -- > svg :: Svg () -> Svg ()
 -- > svg content = do
 -- >   doctype_
 -- >   with (svg11_ content) [version_ "1.1", width_ "300" , height_ "200"]
--- > 
+-- >
 -- > contents :: Svg ()
 -- > contents = do
 -- >   rect_ [width_ "100%", height_ "100%", fill_ "red"]
 -- >   circle_ [cx_ "150", cy_ "100", r_ "80", fill_ "green"]
 -- >   text_ [x_ "150", y_ "125", fontSize_ "60", textAnchor_ "middle", fill_ "white"] "SVG"
--- > 
--- > 
+-- >
+-- >
 -- > main :: IO ()
 -- > main = do
 -- >   print $ svg contents
