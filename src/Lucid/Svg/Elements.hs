@@ -330,24 +330,24 @@ textPath_ :: ElementBuilder
 textPath_ = element "textPath"
 
 -- | @title@ element
-title_ :: [Attribute] -> Element
-title_ = with $ makeXmlElementNoEnd "title"
+title_ :: ElementBuilder
+title_ = element "title"
 
 -- | @tref@ element
-tref_ :: [Attribute] -> Element
-tref_ = with $ makeXmlElementNoEnd "tref"
+tref_ :: ElementBuilder
+tref_ = element "tref"
 
 -- | @tspan@ element
-tspan_ :: [Attribute] -> Element
-tspan_ = with $ makeXmlElementNoEnd "tspan"
+tspan_ :: ElementBuilder
+tspan_ = element "tspan"
 
 -- | @use@ element
-use_ :: [Attribute] -> Element
-use_ = with $ makeXmlElementNoEnd "use"
+use_ :: ElementBuilder
+use_ = element "use"
 
 -- | @view@ element
-view_ :: [Attribute] -> Element
-view_ = with $ makeXmlElementNoEnd "view"
+view_ :: ElementBuilder
+view_ = element "view"
 
 -- | @vkern@ element
 vkern_ :: [Attribute] -> Element
