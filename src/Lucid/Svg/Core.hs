@@ -1,5 +1,5 @@
-{-# LANGUAGE FlexibleInstances    #-}
-{-# LANGUAGE OverloadedStrings    #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE OverloadedStrings #-}
 
 -------------------------------------------------------------------------------
 -- |
@@ -25,10 +25,20 @@ module Lucid.Svg.Core
 , element
 , with
   -- * Rendering
-, render
+, renderBS
 , renderToFile
+, renderText
 ) where
 
+import           Blaze.ByteString.Builder (Builder)
+import qualified Blaze.ByteString.Builder as Blaze
+import           Blaze.ByteString.Builder.Html.Utf8 ( fromText
+                                                    , fromHtmlEscapedText
+                                                    , fromHtmlEscapedString
+                                                    , fromHtmlEscapedLazyText )
+import qualified Blaze.ByteString.Builder.Html.Utf8 as Blaze
+import qualified Data.ByteString.Lazy as LB
+import           Data.ByteString.Lazy (ByteString)
 import           Data.Maybe (fromMaybe)
 import           Data.HashMap.Strict (HashMap)
 import qualified Data.HashMap.Strict as M
@@ -37,9 +47,7 @@ import           Data.String
 import           Data.Text (Text)
 import qualified Data.Text as T
 import qualified Data.Text.Lazy as LT
-import qualified Data.Text.Lazy.Builder as LT
-import           Data.Text.Lazy.Builder (Builder, fromText, toLazyText, singleton)
-import           Data.Text.Lazy.IO as LT
+import qualified Data.Text.Lazy.Encoding as LT
 
 --------------------------------------------------------------------------------
 -- Types
@@ -57,10 +65,13 @@ class ToElement a where
   toElement :: a -> Element
 
 instance ToElement String where
-  toElement = const . LT.fromString
+  toElement = const . fromHtmlEscapedString
 
 instance ToElement Text where
-  toElement = const . fromText
+  toElement = const . fromHtmlEscapedText
+
+instance ToElement LT.Text where
+  toElement = const . fromHtmlEscapedLazyText
 
 --------------------------------------------------------------------------------
 -- Combinators
@@ -109,7 +120,7 @@ foldlMapWithKey :: Monoid m => (k -> v -> m) -> HashMap k v -> m
 foldlMapWithKey f = M.foldlWithKey' (\m k v -> m <> f k v) mempty
 
 s2b :: String -> Builder
-s2b = fromString
+s2b = Blaze.fromString
 
 -- | Build and encode an attribute.
 buildAttr :: Text -> Text -> Builder
@@ -118,34 +129,19 @@ buildAttr key val =
   fromText key <>
   if val == mempty
     then mempty
-    else s2b "=\"" <> fromText val <> s2b "\""
+    else s2b "=\"" <> fromHtmlEscapedText val <> s2b "\""
 
 --------------------------------------------------------------------------------
 -- Rendering
 
--- Render a 'Element' to lazy text.
-render :: Element -> LT.Text
-render ml = toLazyText $ ml mempty
+-- | Render a 'Element' to lazy bytestring.
+renderBS :: Element -> ByteString
+renderBS ml = Blaze.toLazyByteString $ ml mempty
 
--- Render a 'Element' to a file.
+-- | Render a 'Element' to a file.
 renderToFile :: FilePath -> Element -> IO ()
-renderToFile fp = LT.writeFile fp . render
+renderToFile fp = LB.writeFile fp . renderBS
 
---------------------------------------------------------------------------------
--- Utilities
-
-fromHtmlEscapedText :: Text -> Builder
-fromHtmlEscapedText = T.foldr (\c b -> c2b c <> b) mempty
-  where
-    c2b a =
-      fromMaybe (singleton a) $
-      lookup a table
-    table :: [(Char, Builder)]
-    table =
-      [
-        ('<', "&lt;"),
-        ('>', "&gt;"),
-        ('&', "&amp;"),
-        ('"', "&quot;"),
-        ('\'', "&#39;")
-      ]
+-- | Reder an 'Element' to lazy text.
+renderText :: Element -> LT.Text
+renderText = LT.decodeUtf8 . renderBS

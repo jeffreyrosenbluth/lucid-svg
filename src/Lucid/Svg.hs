@@ -39,7 +39,7 @@ import           Lucid.Svg.Path
 prettyText :: Element -> Text
 prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
   where
-    text = render svg
+    text = renderText svg
     go c f Nothing n
       | c == '<' || c == '/' = f (Just c) n
     go c f (Just '<') n
