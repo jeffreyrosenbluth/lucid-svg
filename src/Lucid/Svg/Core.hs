@@ -14,7 +14,7 @@
 
 module Lucid.Svg.Core
 ( -- * Types
-  Attribute(..)
+  Attribute
 , Element
 , ToElement(..)
   -- * Combinators

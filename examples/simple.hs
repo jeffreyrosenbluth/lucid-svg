@@ -7,15 +7,15 @@ import Data.Text.Lazy as T
 svg :: Element -> Element
 svg content =
      doctype_
-  <> with (svg11_ content) [version_ "1.1", width_ "300" , height_ "200"]
+  <> with (svg11_ content) [Version <-- "1.1", Width <-- "300", Height <-- "200"]
 
 contents :: Element
 contents =
-     rect_   [width_ "100%", height_ "100%", fill_ "red"]
-  <> circle_ [cx_ "150", cy_ "100", r_ "80", fill_ "green"]
-  <> text_   [x_ "150", y_ "125", font_size_ "60", text_anchor_ "middle", fill_ "white"] "SVG"
-
+     rect_   [ Width <-- "100%", Height <-- "100%", "red" --> Fill] nil
+  <> circle_ [ Cx <-- "150", Cy <-- "100", R <-- "80", Fill <-- "green"] nil
+  <> text_   [ X <-- "150", Y <-- "125", Font_size <-- "60"
+             , Text_anchor <-- "middle", Fill <-- "white"] "SVG"
 
 main :: IO ()
 main = do
-  putStrLn . T.unpack . render $ svg contents
+  putStrLn . T.unpack . renderText $ svg contents
