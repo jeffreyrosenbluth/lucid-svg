@@ -19,4 +19,4 @@ contents = do
 
 main :: IO ()
 main = do
-  putStrLn . T.unpack . renderText $ svg contents
+  print $ svg contents

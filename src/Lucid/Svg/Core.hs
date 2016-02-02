@@ -54,6 +54,9 @@ data Attribute = Attribute !Text !Text
 -- | Type of an SVG element.
 newtype Element = Element (HashMap Text Text -> Builder)
 
+instance Show Element where
+  show e = LT.unpack . renderText $ e
+
 instance Monoid Element where
   mempty = Element mempty
   mappend (Element e1) (Element e2) = Element (e1 <> e2)

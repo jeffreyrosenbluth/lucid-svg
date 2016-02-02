@@ -64,27 +64,23 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 --
 -- 'path_', 'circle_', 'color_', 'scale_'
 --
--- Note: If you're testing in the REPL you need to add a type annotation to
--- indicate that you want SVG. In normal code your top-level
--- declaration signatures handle that.
---
 -- Plain text is written using the @OverloadedStrings@ and
 -- @ExtendedDefaultRules@ extensions, and is automatically escaped:
 --
 -- As in Lucid, elements nest by function application:
 --
--- >>> g_ (text_ "Hello SVG") :: Element
+-- >>> g_ [] (text_ [] "Hello SVG")
 -- <g><text>Hello SVG</text></g>
 --
 -- and elements are juxtaposed via monoidal append:
 --
--- >>> text_ "Hello" <> text_ "SVG" :: Element
+-- >>> text_ [] "Hello" <> text_ [] "SVG"
 -- <text>Hello</text><text>SVG</text>
 --
 -- Attributes are set by providing an argument list. Each argument is set
 -- using the 'bindAttr' function or operators, '<--' and '-->'.
 --
--- >>> rect_ [Width <-- "100%", Height <-- "100%", "red" --> Fill] :: Element
+-- >>> rect_ [Width <-- "100%", Height <-- "100%", "red" --> Fill] nil
 -- <rect height="100%" width="100%" fill="red"></rect>
 --
 -- Path data can be constructed using the functions in 'Lucid.Svg.Path'
@@ -104,19 +100,19 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 -- > import Lucid.Svg
 -- >
 -- > svg :: Element -> Element
--- > svg content = do
--- >   doctype_
--- >   with (svg11_ content) [version_ "1.1", width_ "300" , height_ "200"]
+-- > svg content =
+-- >      doctype_
+-- >   <> with (svg11_ content) [version_ "1.1", width_ "300" , height_ "200"]
 -- >
 -- > contents :: Element
 -- > contents =
--- >      rect_ [Width <-- "100%", Height <-- "100%", Fill <-- "red"]
--- >   <> circle_ [Cx <-- "150", Cy <-- "100", R <-- "80", Fill <-- "green"]
+-- >      rect_ [Width <-- "100%", Height <-- "100%", Fill <-- "red"] nil
+-- >   <> circle_ [Cx <-- "150", Cy <-- "100", R <-- "80", Fill <-- "green"] nil
 -- >   <> text_ [ X <-- "150", Y <-- "125", FontSize <-- "60"
 -- >            , TextAnchor <-- "middle", Fill <-- "white" ] "SVG"
 -- >
 -- >
 -- > main :: IO ()
 -- > main = do
--- >   putStrLn . T.unpack . renderText $ svg contents
+-- >   print $ svg contents
 -- <<http://i.imgur.com/dXu84xR.png>>
