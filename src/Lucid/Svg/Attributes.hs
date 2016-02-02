@@ -21,6 +21,20 @@ module Lucid.Svg.Attributes
 import Lucid.Svg.Core
 import Data.Text (Text)
 
+-- | Make an 'Attribute' from it's value constructor and it's text value.
+bindAttr :: AttrTag -> Text -> Attribute
+bindAttr t v = makeAttribute (tag2text t) v
+
+-- | Infix version of 'bindAttr'
+infixl 4 <--
+(<--) :: AttrTag -> Text -> Attribute
+(<--) = bindAttr
+
+-- | Infix version of 'bindAttr' with it's arguments reversed.
+infixl 4 -->
+(-->) :: Text -> AttrTag -> Attribute
+(-->) = flip bindAttr
+
 data AttrTag
   = Accent_height
   | Accumulate
@@ -286,16 +300,6 @@ data AttrTag
   | YChannelselector
   | Z
   | ZoomAndPan
-
--- | Make an 'Attribute' from it's value constructor and it's text value.
-bindAttr :: AttrTag -> Text -> Attribute
-bindAttr t v = makeAttribute (tag2text t) v
-
-infixl 4 <--
-(<--) = bindAttr
-
-infixl 4 -->
-(-->) = flip bindAttr
 
 -- Link the tags to their svg strings.
 tag2text :: AttrTag -> Text

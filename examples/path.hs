@@ -2,20 +2,21 @@
 
 import Lucid.Svg
 import Data.Monoid
+import Data.Text.Lazy as T
 
-svg :: Svg () -> Svg ()
+svg :: Element -> Element
 svg content = do
   doctype_
-  with (svg11_ content) [width_ "325" , height_ "325"]
+  with (svg11_ content) [Width <-- "325" , Height <-- "325"]
 
-contents :: Svg ()
+contents :: Element
 contents = do
   path_ (
-    [ d_ (mA 10 80 <> qA 52.5 10 95 80 <> tA 180 80 <> z)
-    , stroke_ "blue"
-    , fill_ "orange"
-    ])
+    [ D <-- (mA 10 80 <> qA 52.5 10 95 80 <> tA 180 80 <> z)
+    , Stroke <-- "blue"
+    , Fill <-- "orange"
+    ]) nil
 
 main :: IO ()
 main = do
-  print $ svg contents
+  putStrLn . T.unpack . renderText $ svg contents
