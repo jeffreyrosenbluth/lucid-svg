@@ -67,7 +67,8 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 -- Plain text is written using the @OverloadedStrings@ and
 -- @ExtendedDefaultRules@ extensions, and is automatically escaped:
 --
--- As in Lucid, elements nest by function application:
+-- As in Lucid, elements nest by function application (unlike Lucid, there
+-- is no Monad instance for Elements):
 --
 -- >>> g_ [] (text_ [] "Hello SVG")
 -- <g><text>Hello SVG</text></g>
@@ -87,11 +88,11 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 -- and combined monoidally:
 --
 -- @
--- path_ (
+-- path_
 --   [ D <-- (mA 10 80 <> qA 52.5 10 95 80 <> tA 180 80 <> z)
 --   , Stroke <-- "blue"
 --   , Fill <-- "orange"
---   ]) nil
+--   ] nil
 -- @
 -- > <path d="M 10,80 Q 52.5,10 95,80 T 180,80 Z" stroke="blue" fill="orange"></path>
 --

@@ -99,6 +99,7 @@ with (Element e) attrs = Element $ \a ->
 
 -- | Used to make specific SVG element builders.
 element :: Text -> [Attribute] -> Element -> Element
+element name []    e = makeElement name e
 element name attrs e = with (makeElement name e) attrs
 
 -- | The empty element.
