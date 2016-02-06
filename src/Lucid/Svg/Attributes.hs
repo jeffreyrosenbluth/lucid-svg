@@ -14,8 +14,8 @@
 module Lucid.Svg.Attributes
   ( AttrTag(..)
   , bindAttr
-  , (-->)
-  , (<--)
+  , (->>)
+  , ( <<-)
   ) where
 
 import Lucid.Svg.Core
@@ -26,14 +26,14 @@ bindAttr :: AttrTag -> Text -> Attribute
 bindAttr t v = makeAttribute (tag2text t) v
 
 -- | Infix version of 'bindAttr'
-infixl 4 <--
-(<--) :: AttrTag -> Text -> Attribute
-(<--) = bindAttr
+infixl 4  <<-
+( <<-) :: AttrTag -> Text -> Attribute
+( <<-) = bindAttr
 
 -- | Infix version of 'bindAttr' with it's arguments reversed.
-infixl 4 -->
-(-->) :: Text -> AttrTag -> Attribute
-(-->) = flip bindAttr
+infixl 4  ->>
+( ->>) :: Text -> AttrTag -> Attribute
+( ->>) = flip bindAttr
 
 data AttrTag
   = Accent_height

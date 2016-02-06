@@ -79,9 +79,9 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 -- <text>Hello</text><text>SVG</text>
 --
 -- Attributes are set by providing an argument list. Each argument is set
--- using the 'bindAttr' function or operators, '<--' and '-->'.
+-- using the 'bindAttr' function or operators, ' <<-' and '-->'.
 --
--- >>> rect_ [Width <-- "100%", Height <-- "100%", "red" --> Fill] nil
+-- >>> rect_ [Width  <<- "100%", Height  <<- "100%", "red" ->> Fill] nil
 -- <rect height="100%" width="100%" fill="red"></rect>
 --
 -- Path data can be constructed using the functions in 'Lucid.Svg.Path'
@@ -89,9 +89,9 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 --
 -- @
 -- path_
---   [ D <-- (mA 10 80 <> qA 52.5 10 95 80 <> tA 180 80 <> z)
---   , Stroke <-- "blue"
---   , Fill <-- "orange"
+--   [ D  <<- (mA 10 80 <> qA 52.5 10 95 80 <> tA 180 80 <> z)
+--   , Stroke  <<- "blue"
+--   , Fill  <<- "orange"
 --   ] nil
 -- @
 -- > <path d="M 10,80 Q 52.5,10 95,80 T 180,80 Z" stroke="blue" fill="orange"></path>
@@ -107,10 +107,10 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 -- >
 -- > contents :: Element
 -- > contents =
--- >      rect_ [Width <-- "100%", Height <-- "100%", Fill <-- "red"] nil
--- >   <> circle_ [Cx <-- "150", Cy <-- "100", R <-- "80", Fill <-- "green"] nil
--- >   <> text_ [ X <-- "150", Y <-- "125", FontSize <-- "60"
--- >            , TextAnchor <-- "middle", Fill <-- "white" ] "SVG"
+-- >      rect_ [Width  <<- "100%", Height  <<- "100%", Fill  <<- "red"] nil
+-- >   <> circle_ [Cx  <<- "150", Cy  <<- "100", R  <<- "80", Fill  <<- "green"] nil
+-- >   <> text_ [ X  <<- "150", Y  <<- "125", FontSize  <<- "60"
+-- >            , TextAnchor  <<- "middle", Fill  <<- "white" ] "SVG"
 -- >
 -- >
 -- > main :: IO ()
