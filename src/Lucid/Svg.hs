@@ -28,7 +28,6 @@ module Lucid.Svg
 import           Data.Functor.Identity
 import           Data.Int               (Int64)
 import           Data.Monoid
-import           Data.Text.Lazy
 import           Data.Text.Lazy         as LT
 import           Data.Text.Lazy.Builder as B
 import           Lucid.Svg.Core

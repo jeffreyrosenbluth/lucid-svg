@@ -84,7 +84,7 @@ instance ToElement LT.Text where
 makeAttribute :: Text -- ^ Attribute name.
               -> Text -- ^ Attribute value.
               -> Attribute
-makeAttribute x y = Attribute x y
+makeAttribute = Attribute
 
 -- | Union two sets of attributes and append duplicate keys.
 unionAttrs :: HashMap Text Text -> HashMap Text Text -> HashMap Text Text
