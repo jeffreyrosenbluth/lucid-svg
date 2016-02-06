@@ -20,6 +20,7 @@ module Lucid.Svg
   , module Lucid.Svg.Path
   , module Lucid.Svg.Elements
   , module Lucid.Svg.Attributes
+  , (<>)
   -- * Rendering
   , prettyText
   ) where

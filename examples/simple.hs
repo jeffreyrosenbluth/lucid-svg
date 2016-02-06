@@ -1,8 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 import Lucid.Svg
-import Data.Monoid
-import Data.Text.Lazy as T
 
 svg :: Element -> Element
 svg content =

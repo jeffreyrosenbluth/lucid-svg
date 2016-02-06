@@ -8,18 +8,18 @@ Simple DSL for writing SVG, based on lucid
 {-# LANGUAGE OverloadedStrings #-}
 
 import Lucid.Svg
- 
-svg :: Svg () -> Svg ()
-svg content = do
-  doctype_
-  with (svg11_ content) [width_ "300" , height_ "200"]
 
-contents :: Svg ()
-contents = do
-  rect_   [width_ "100%", height_ "100%", fill_ "red"]
-  circle_ [cx_ "150", cy_ "100", r_ "80", fill_ "green"]
-  text_   [x_ "150", y_ "125", font_size_ "60", text_anchor_ "middle", fill_ "white"] "SVG"
+svg :: Element -> Element
+svg content =
+     doctype_
+  <> with (svg11_ content) [Version <<- "1.1", Width <<- "300", Height <<- "200"]
 
+contents :: Element
+contents =
+     rect_   [ Width <<- "100%", Height <<- "100%", "red" ->> Fill] nil
+  <> circle_ [ Cx <<- "150", Cy <<- "100", R <<- "80", Fill <<- "green"] nil
+  <> text_   [ X <<- "150", Y <<- "125", Font_size <<- "60"
+             , Text_anchor <<- "middle", Fill <<- "white"] "SVG"
 
 main :: IO ()
 main = do
