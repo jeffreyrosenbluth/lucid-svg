@@ -1,6 +1,6 @@
 lucid-svg [![Hackage](https://img.shields.io/hackage/v/lucid-svg.svg?style=flat)](https://hackage.haskell.org/package/lucid-svg)
 =========
-Simple DSL for writing SVG, based on lucid
+Simple DSL for writing SVG, in the spirit of lucid.
 
 ## Example
 
