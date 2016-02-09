@@ -64,11 +64,11 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 --
 -- 'path_', 'circle_', 'color_', 'scale_'
 --
--- Plain text is written using the @OverloadedStrings@ and
--- @ExtendedDefaultRules@ extensions, and is automatically escaped:
+-- Plain text is written using the @OverloadedStrings@
+-- extension, and is automatically escaped:
 --
 -- As in Lucid, elements nest by function application (unlike Lucid, there
--- is no Monad instance for Elements):
+-- is no Monad instance for 'Element's and an 'Attribute' list is always required):
 --
 -- >>> g_ [] (text_ [] "Hello SVG")
 -- <g><text>Hello SVG</text></g>
@@ -79,7 +79,7 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 -- <text>Hello</text><text>SVG</text>
 --
 -- Attributes are set by providing an argument list. Each argument is set
--- using the 'bindAttr' function or operators, ' <<-' and '->>'.
+-- using the 'bindAttr' function or operators, '<<-' and '->>'.
 --
 -- >>> rect_ [Width  <<- "100%", Height  <<- "100%", "red" ->> Fill] nil
 -- <rect height="100%" width="100%" fill="red"></rect>
