@@ -4,7 +4,7 @@ import Lucid.Svg
 
 svg :: Element -> Element
 svg content =
-     doctype_
+     doctype
   <> with (svg11_ content) [Version <<- "1.1", Width <<- "300", Height <<- "200"]
 
 contents :: Element

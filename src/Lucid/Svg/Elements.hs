@@ -17,8 +17,8 @@ module Lucid.Svg.Elements where
 import Lucid.Svg.Core
 
 -- | @DOCTYPE@ element
-doctype_ :: Element
-doctype_ = makeElementNoEnd "?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n    \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\""
+doctype :: Element
+doctype = makeElementDoctype "?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n    \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\""
 
 -- | @svg@ element + svg 1.1 Attribute
 svg11_:: Element -> Element
@@ -200,11 +200,11 @@ fontFace_ = term "font-face"
 
 -- | @fontFaceFormat@ element
 fontFaceFormat_ :: [Attribute] -> Element
-fontFaceFormat_ = with $ makeXmlElementNoEnd "font-face-format"
+fontFaceFormat_ = with $ makeElementNoEnd "font-face-format"
 
 -- | @fontFaceName@ element
 fontFaceName_ :: [Attribute] -> Element
-fontFaceName_ = with $ makeXmlElementNoEnd "font-face-name"
+fontFaceName_ = with $ makeElementNoEnd "font-face-name"
 
 -- | @fontFaceSrc@ element
 fontFaceSrc_ :: Term result => [Attribute] -> result
@@ -228,11 +228,11 @@ glyph_ = term "glyph"
 
 -- | @glyphref@ element
 glyphRef_ :: [Attribute] -> Element
-glyphRef_ = with $ makeXmlElementNoEnd "glyphRef"
+glyphRef_ = with $ makeElementNoEnd "glyphRef"
 
 -- | @hkern@ element
 hkern_ :: [Attribute] -> Element
-hkern_ = with $ makeXmlElementNoEnd "hkern"
+hkern_ = with $ makeElementNoEnd "hkern"
 
 -- | @image@ element
 image_ :: Term result => [Attribute] -> result
@@ -348,4 +348,4 @@ view_ = term "view"
 
 -- | @vkern@ element
 vkern_ :: [Attribute] -> Element
-vkern_ = with $ makeXmlElementNoEnd "vkern"
+vkern_ = with $ makeElementNoEnd "vkern"

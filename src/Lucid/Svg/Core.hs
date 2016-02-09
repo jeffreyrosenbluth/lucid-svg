@@ -21,8 +21,8 @@ module Lucid.Svg.Core
   -- * Combinators
 , makeAttribute
 , makeElement
+, makeElementDoctype
 , makeElementNoEnd
-, makeXmlElementNoEnd
 , with
   -- * Rendering
 , renderBS
@@ -78,14 +78,14 @@ instance ToElement LT.Text where
 
 -- | Used to make specific SVG element builders.
 class Term result where
-  -- | Used for constructing elements e.g. @term "p"@ yields 'Lucid.Html5.p_'.
+  -- | Used for constructing elements e.g. @term "circle"@ yields 'circle_'.
   term :: Text -> [Attribute] -> result
 
 instance (e ~ Element) => Term (e -> Element) where
   term name attrs e = with (makeElement name e) attrs
 
 instance Term Element where
-  term name attrs = with (makeXmlElementNoEnd name) attrs
+  term name attrs = with (makeElementNoEnd name) attrs
 
 --------------------------------------------------------------------------------
 -- Combinators
@@ -117,17 +117,17 @@ makeElement name (Element c) = Element $ \a -> go c a
       <> children mempty
       <> s2b "</" <> BB.fromText name <> s2b ">"
 
--- | Make an SVG element builder with no end tag.
-makeElementNoEnd :: Text -> Element
-makeElementNoEnd name = Element $ \a -> go a
+-- | Make an SVG element builder with no end tag,.
+makeElementDoctype :: Text -> Element
+makeElementDoctype name = Element $ \a -> go a
   where
     go attrs =
          s2b "<" <> BB.fromText name
       <> foldlMapWithKey buildAttr attrs <> s2b ">"
 
 -- | Make an XML element with no end tag.
-makeXmlElementNoEnd :: Text -> Element
-makeXmlElementNoEnd name = Element $ \a -> go a
+makeElementNoEnd :: Text -> Element
+makeElementNoEnd name = Element $ \a -> go a
   where
     go attrs =
          s2b "<" <> BB.fromText name

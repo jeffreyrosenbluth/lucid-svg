@@ -79,7 +79,7 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 -- <text>Hello</text><text>SVG</text>
 --
 -- Attributes are set by providing an argument list. Each argument is set
--- using the 'bindAttr' function or operators, ' <<-' and '-->'.
+-- using the 'bindAttr' function or operators, ' <<-' and '->>'.
 --
 -- >>> rect_ [Width  <<- "100%", Height  <<- "100%", "red" ->> Fill] nil
 -- <rect height="100%" width="100%" fill="red"></rect>
@@ -102,13 +102,13 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 -- >
 -- > svg :: Element -> Element
 -- > svg content =
--- >      doctype_
--- >   <> with (svg11_ content) [version_ "1.1", width_ "300" , height_ "200"]
+-- >      doctype
+-- >   <> with (svg11_ content) [Version <<- "1.1", Width <<- "300" , Height <<- "200"]
 -- >
 -- > contents :: Element
 -- > contents =
--- >      rect_ [Width  <<- "100%", Height  <<- "100%", Fill  <<- "red"] nil
--- >   <> circle_ [Cx  <<- "150", Cy  <<- "100", R  <<- "80", Fill  <<- "green"] nil
+-- >      rect_ [Width  <<- "100%", Height  <<- "100%", Fill  <<- "red"]
+-- >   <> circle_ [Cx  <<- "150", Cy  <<- "100", R  <<- "80", Fill  <<- "green"]
 -- >   <> text_ [ X  <<- "150", Y  <<- "125", FontSize  <<- "60"
 -- >            , TextAnchor  <<- "middle", Fill  <<- "white" ] "SVG"
 -- >
