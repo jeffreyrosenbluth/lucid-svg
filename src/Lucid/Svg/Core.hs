@@ -9,7 +9,8 @@
 -- License     :  BSD-style (see LICENSE)
 -- Maintainer  :  jeffrey.rosenbluth@gmail.com
 --
--- SVG elements.
+-- Lucid-Svg Core types and functions.
+--
 -------------------------------------------------------------------------------
 
 module Lucid.Svg.Core
@@ -21,8 +22,8 @@ module Lucid.Svg.Core
   -- * Combinators
 , makeAttribute
 , makeElement
-, makeElementDoctype
 , makeElementNoEnd
+, makeElementDoctype
 , with
   -- * Rendering
 , renderBS
@@ -117,7 +118,7 @@ makeElement name (Element c) = Element $ \a -> go c a
       <> children mempty
       <> s2b "</" <> BB.fromText name <> s2b ">"
 
--- | Make an SVG element builder with no end tag,.
+-- | Make an SVG doctype element builder.
 makeElementDoctype :: Text -> Element
 makeElementDoctype name = Element $ \a -> go a
   where
@@ -125,7 +126,7 @@ makeElementDoctype name = Element $ \a -> go a
          s2b "<" <> BB.fromText name
       <> foldlMapWithKey buildAttr attrs <> s2b ">"
 
--- | Make an XML element with no end tag.
+-- | Make an SVG element with no end tag, contains only attributes.
 makeElementNoEnd :: Text -> Element
 makeElementNoEnd name = Element $ \a -> go a
   where
