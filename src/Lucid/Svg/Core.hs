@@ -1,5 +1,6 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TypeFamilies      #-}
 
 -------------------------------------------------------------------------------
 -- |
@@ -9,7 +10,6 @@
 -- Maintainer  :  jeffrey.rosenbluth@gmail.com
 --
 -- SVG elements.
---
 -------------------------------------------------------------------------------
 
 module Lucid.Svg.Core
@@ -17,14 +17,13 @@ module Lucid.Svg.Core
   Attribute
 , Element
 , ToElement(..)
+, Term(..)
   -- * Combinators
 , makeAttribute
 , makeElement
 , makeElementNoEnd
 , makeXmlElementNoEnd
-, element
 , with
-, nil
   -- * Rendering
 , renderBS
 , renderToFile
@@ -77,6 +76,17 @@ instance ToElement Text where
 instance ToElement LT.Text where
   toElement = Element . const . BB.fromHtmlEscapedLazyText
 
+-- | Used to make specific SVG element builders.
+class Term result where
+  -- | Used for constructing elements e.g. @term "p"@ yields 'Lucid.Html5.p_'.
+  term :: Text -> [Attribute] -> result
+
+instance (e ~ Element) => Term (e -> Element) where
+  term name attrs e = with (makeElement name e) attrs
+
+instance Term Element where
+  term name attrs = with (makeXmlElementNoEnd name) attrs
+
 --------------------------------------------------------------------------------
 -- Combinators
 
@@ -96,15 +106,6 @@ with (Element e) attrs = Element $ \a ->
   e (unionAttrs (M.fromListWith (<>) (map toPair attrs)) a)
   where
     toPair (Attribute x y) = (x,y)
-
--- | Used to make specific SVG element builders.
-element :: Text -> [Attribute] -> Element -> Element
-element name []    e = makeElement name e
-element name attrs e = with (makeElement name e) attrs
-
--- | The empty element.
-nil :: Element
-nil = mempty
 
 -- | Make an SVG element builder
 makeElement :: Text -> Element -> Element

@@ -16,9 +16,6 @@ module Lucid.Svg.Elements where
 
 import Lucid.Svg.Core
 
--- | Type of functions that make elements from attributes and child elements.
-type ElementBuilder = [Attribute] -> Element -> Element
-
 -- | @DOCTYPE@ element
 doctype_ :: Element
 doctype_ = makeElementNoEnd "?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n    \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\""
@@ -30,176 +27,176 @@ svg11_ = svg_ [ makeAttribute "xmlns" "http://www.w3.org/2000/svg"
               , makeAttribute "version" "1.1" ]
 
 -- | @a@ element
-a_ :: ElementBuilder
-a_ = element "a"
+a_ :: Term result => [Attribute] -> result
+a_ = term "a"
 
 -- | @altglyph@ element
 {-# DEPRECATED altGlyph_ "Removed from web standards." #-}
-altGlyph_ :: ElementBuilder
-altGlyph_ = element "altGlyph"
+altGlyph_ :: Term result => [Attribute] -> result
+altGlyph_ = term "altGlyph"
 
 -- | @altglyphdef@ element
 {-# DEPRECATED altGlyphDef_ "Removed from web standards." #-}
-altGlyphDef_ :: ElementBuilder
-altGlyphDef_ = element "altGlyphDef"
+altGlyphDef_ :: Term result => [Attribute] -> result
+altGlyphDef_ = term "altGlyphDef"
 
 -- | @altglyphitem@ element
 {-# DEPRECATED altGlyphItem_ "Removed from web standards." #-}
-altGlyphItem_ :: ElementBuilder
-altGlyphItem_ = element "altGlyphItem"
+altGlyphItem_ :: Term result => [Attribute] -> result
+altGlyphItem_ = term "altGlyphItem"
 
 -- | @animate@ element
-animate_ :: ElementBuilder
-animate_ = element "animate"
+animate_ :: Term result => [Attribute] -> result
+animate_ = term "animate"
 
 -- | @animatecolor@ element
 {-# DEPRECATED animateColor_ "Removed from web standards." #-}
-animateColor_ :: ElementBuilder
-animateColor_ = element "animateColor"
+animateColor_ :: Term result => [Attribute] -> result
+animateColor_ = term "animateColor"
 
 -- | @animatemotion@ element
-animateMotion_ :: ElementBuilder
-animateMotion_ = element "animateMotion"
+animateMotion_ :: Term result => [Attribute] -> result
+animateMotion_ = term "animateMotion"
 
 -- | @animatetransform@ element
-animateTransform_ :: ElementBuilder
-animateTransform_ = element "animateTransform"
+animateTransform_ :: Term result => [Attribute] -> result
+animateTransform_ = term "animateTransform"
 
 -- | @circle@ element
-circle_ :: ElementBuilder
-circle_ = element "circle"
+circle_ :: Term result => [Attribute] -> result
+circle_ = term "circle"
 
 -- | @clipPath@ element or attribute
-clipPath_ :: ElementBuilder
-clipPath_ = element "clipPath"
+clipPath_ :: Term result => [Attribute] -> result
+clipPath_ = term "clipPath"
 
 -- | @colorProfile@ element
-colorProfile_ :: ElementBuilder
-colorProfile_ = element "color-profile"
+colorProfile_ :: Term result => [Attribute] -> result
+colorProfile_ = term "color-profile"
 
 -- | @cursor@ element
-cursor_ :: ElementBuilder
-cursor_ = element "cursor"
+cursor_ :: Term result => [Attribute] -> result
+cursor_ = term "cursor"
 
 -- | @defs@ element
-defs_ :: ElementBuilder
-defs_ = element "defs"
+defs_ :: Term result => [Attribute] -> result
+defs_ = term "defs"
 
 -- | @desc@ element
-desc_ :: ElementBuilder
-desc_ = element "desc"
+desc_ :: Term result => [Attribute] -> result
+desc_ = term "desc"
 
 -- | @ellipse@ element
-ellipse_ :: ElementBuilder
-ellipse_ = element "ellipse"
+ellipse_ :: Term result => [Attribute] -> result
+ellipse_ = term "ellipse"
 
 -- | @feblend@ element
-feBlend_ :: ElementBuilder
-feBlend_ = element "feBlend"
+feBlend_ :: Term result => [Attribute] -> result
+feBlend_ = term "feBlend"
 
 -- | @fecolormatrix@ element
-feColorMatrix_ :: ElementBuilder
-feColorMatrix_ = element "feColorMatrix"
+feColorMatrix_ :: Term result => [Attribute] -> result
+feColorMatrix_ = term "feColorMatrix"
 
 -- | @fecomponenttransfer@ element
-feComponentTransfer_ :: ElementBuilder
-feComponentTransfer_ = element "feComponentTransfer"
+feComponentTransfer_ :: Term result => [Attribute] -> result
+feComponentTransfer_ = term "feComponentTransfer"
 
 -- | @fecomposite@ element
-feComposite_ :: ElementBuilder
-feComposite_ = element "feComposite"
+feComposite_ :: Term result => [Attribute] -> result
+feComposite_ = term "feComposite"
 
 -- | @feconvolvematrix@ element
-feConvolveMatrix_ :: ElementBuilder
-feConvolveMatrix_ = element "feConvolveMatrix"
+feConvolveMatrix_ :: Term result => [Attribute] -> result
+feConvolveMatrix_ = term "feConvolveMatrix"
 
 -- | @fediffuselighting@ element
-feDiffuseLighting_ :: ElementBuilder
-feDiffuseLighting_ = element "feDiffuseLighting"
+feDiffuseLighting_ :: Term result => [Attribute] -> result
+feDiffuseLighting_ = term "feDiffuseLighting"
 
 -- | @fedisplacementmap@ element
-feDisplacementMap_ :: ElementBuilder
-feDisplacementMap_ = element "feDisplacementMap"
+feDisplacementMap_ :: Term result => [Attribute] -> result
+feDisplacementMap_ = term "feDisplacementMap"
 
 -- | @fedistantlight@ element
-feDistantLight_ :: ElementBuilder
-feDistantLight_ = element "feDistantLight"
+feDistantLight_ :: Term result => [Attribute] -> result
+feDistantLight_ = term "feDistantLight"
 
 -- | @feflood@ element
-feFlood_ :: ElementBuilder
-feFlood_ = element "feFlood"
+feFlood_ :: Term result => [Attribute] -> result
+feFlood_ = term "feFlood"
 
 -- | @fefunca@ element
-feFuncA_ :: ElementBuilder
-feFuncA_ = element "feFuncA"
+feFuncA_ :: Term result => [Attribute] -> result
+feFuncA_ = term "feFuncA"
 
 -- | @fefuncb@ element
-feFuncB_ :: ElementBuilder
-feFuncB_ = element "feFuncB"
+feFuncB_ :: Term result => [Attribute] -> result
+feFuncB_ = term "feFuncB"
 
 -- | @fefuncg@ element
-feFuncG_ :: ElementBuilder
-feFuncG_ = element "feFuncG"
+feFuncG_ :: Term result => [Attribute] -> result
+feFuncG_ = term "feFuncG"
 
 -- | @fefuncr@ element
-feFuncR_ :: ElementBuilder
-feFuncR_ = element "feFuncR"
+feFuncR_ :: Term result => [Attribute] -> result
+feFuncR_ = term "feFuncR"
 
 -- | @fegaussianblur@ element
-feGaussianBlur_ :: ElementBuilder
-feGaussianBlur_ = element "feGaussianBlur"
+feGaussianBlur_ :: Term result => [Attribute] -> result
+feGaussianBlur_ = term "feGaussianBlur"
 
 -- | @feimage@ element
-feImage_ :: ElementBuilder
-feImage_ = element "feImage"
+feImage_ :: Term result => [Attribute] -> result
+feImage_ = term "feImage"
 
 -- | @femerge@ element
-feMerge_ :: ElementBuilder
-feMerge_ = element "feMerge"
+feMerge_ :: Term result => [Attribute] -> result
+feMerge_ = term "feMerge"
 
 -- | @femergenode@ element
-feMergeNode_ :: ElementBuilder
-feMergeNode_ = element "feMergeNode"
+feMergeNode_ :: Term result => [Attribute] -> result
+feMergeNode_ = term "feMergeNode"
 
 -- | @femorphology@ element
-feMorphology_ :: ElementBuilder
-feMorphology_ = element "feMorphology"
+feMorphology_ :: Term result => [Attribute] -> result
+feMorphology_ = term "feMorphology"
 
 -- | @feoffset@ element
-feOffset_ :: ElementBuilder
-feOffset_ = element "feOffset"
+feOffset_ :: Term result => [Attribute] -> result
+feOffset_ = term "feOffset"
 
 -- | @fepointlight@ element
-fePointLight_ :: ElementBuilder
-fePointLight_ = element "fePointLight"
+fePointLight_ :: Term result => [Attribute] -> result
+fePointLight_ = term "fePointLight"
 
 -- | @fespecularlighting@ element
-feSpecularLighting_ :: ElementBuilder
-feSpecularLighting_ = element "feSpecularLighting"
+feSpecularLighting_ :: Term result => [Attribute] -> result
+feSpecularLighting_ = term "feSpecularLighting"
 
 -- | @fespotlight@ element
-feSpotLight_ :: ElementBuilder
-feSpotLight_ = element "feSpotLight"
+feSpotLight_ :: Term result => [Attribute] -> result
+feSpotLight_ = term "feSpotLight"
 
 -- | @fetile@ element
-feTile_ :: ElementBuilder
-feTile_ = element "feTile"
+feTile_ :: Term result => [Attribute] -> result
+feTile_ = term "feTile"
 
 -- | @feturbulence@ element
-feTurbulence_ :: ElementBuilder
-feTurbulence_ = element "feTurbulence"
+feTurbulence_ :: Term result => [Attribute] -> result
+feTurbulence_ = term "feTurbulence"
 
 -- | @filter_@ element
-filter_ :: ElementBuilder
-filter_ = element "filter"
+filter_ :: Term result => [Attribute] -> result
+filter_ = term "filter"
 
 -- | @font@ element
-font_ :: ElementBuilder
-font_ = element "font"
+font_ :: Term result => [Attribute] -> result
+font_ = term "font"
 
 -- | @fontFace@ element
-fontFace_ :: ElementBuilder
-fontFace_ = element "font-face"
+fontFace_ :: Term result => [Attribute] -> result
+fontFace_ = term "font-face"
 
 -- | @fontFaceFormat@ element
 fontFaceFormat_ :: [Attribute] -> Element
@@ -210,24 +207,24 @@ fontFaceName_ :: [Attribute] -> Element
 fontFaceName_ = with $ makeXmlElementNoEnd "font-face-name"
 
 -- | @fontFaceSrc@ element
-fontFaceSrc_ :: ElementBuilder
-fontFaceSrc_ = element "font-face-src"
+fontFaceSrc_ :: Term result => [Attribute] -> result
+fontFaceSrc_ = term "font-face-src"
 
 -- | @fontFaceUri@ element
-fontFaceUri_ :: ElementBuilder
-fontFaceUri_ = element "font-face-uri"
+fontFaceUri_ :: Term result => [Attribute] -> result
+fontFaceUri_ = term "font-face-uri"
 
 -- | @foreignobject@ element
-foreignObject_ :: ElementBuilder
-foreignObject_ = element "foreignObject"
+foreignObject_ :: Term result => [Attribute] -> result
+foreignObject_ = term "foreignObject"
 
 -- | @g@ element
-g_ :: ElementBuilder
-g_ = element "g"
+g_ :: Term result => [Attribute] -> result
+g_ = term "g"
 
 -- | @glyph@ element or attribute
-glyph_ :: ElementBuilder
-glyph_ = element "glyph"
+glyph_ :: Term result => [Attribute] -> result
+glyph_ = term "glyph"
 
 -- | @glyphref@ element
 glyphRef_ :: [Attribute] -> Element
@@ -238,116 +235,116 @@ hkern_ :: [Attribute] -> Element
 hkern_ = with $ makeXmlElementNoEnd "hkern"
 
 -- | @image@ element
-image_ :: ElementBuilder
-image_ = element "image"
+image_ :: Term result => [Attribute] -> result
+image_ = term "image"
 
 -- | @line@ element
-line_ :: ElementBuilder
-line_ = element "line"
+line_ :: Term result => [Attribute] -> result
+line_ = term "line"
 
 -- | @lineargradient@ element
-linearGradient_ :: ElementBuilder
-linearGradient_ = element "linearGradient"
+linearGradient_ :: Term result => [Attribute] -> result
+linearGradient_ = term "linearGradient"
 
 -- | @marker@ element
-marker_ :: ElementBuilder
-marker_ = element "marker"
+marker_ :: Term result => [Attribute] -> result
+marker_ = term "marker"
 
 -- | @mask@ element or attribute
-mask_ :: ElementBuilder
-mask_ = element "mask"
+mask_ :: Term result => [Attribute] -> result
+mask_ = term "mask"
 
 -- | @metadata@ element
-metadata_ :: ElementBuilder
-metadata_ = element "metadata"
+metadata_ :: Term result => [Attribute] -> result
+metadata_ = term "metadata"
 
 -- | @missingGlyph@ element
-missingGlyph_ :: ElementBuilder
-missingGlyph_ = element "missing-glyph"
+missingGlyph_ :: Term result => [Attribute] -> result
+missingGlyph_ = term "missing-glyph"
 
 -- | @mpath@ element
-mpath_ :: ElementBuilder
-mpath_ = element "mpath"
+mpath_ :: Term result => [Attribute] -> result
+mpath_ = term "mpath"
 
 -- | @path@ element
-path_ :: ElementBuilder
-path_ = element "path"
+path_ :: Term result => [Attribute] -> result
+path_ = term "path"
 
 -- | @pattern@ element
-pattern_ :: ElementBuilder
-pattern_ = element "pattern"
+pattern_ :: Term result => [Attribute] -> result
+pattern_ = term "pattern"
 
 -- | @polygon@ element
-polygon_ :: ElementBuilder
-polygon_ = element "polygon"
+polygon_ :: Term result => [Attribute] -> result
+polygon_ = term "polygon"
 
 -- | @polyline@ element
-polyline_ :: ElementBuilder
-polyline_ = element "polyline"
+polyline_ :: Term result => [Attribute] -> result
+polyline_ = term "polyline"
 
 -- | @radialgradient@ element
-radialGradient_ :: ElementBuilder
-radialGradient_ = element "radialGradient"
+radialGradient_ :: Term result => [Attribute] -> result
+radialGradient_ = term "radialGradient"
 
 -- | @rect@ element
-rect_ :: ElementBuilder
-rect_ = element "rect"
+rect_ :: Term result => [Attribute] -> result
+rect_ = term "rect"
 
 -- | @script@ element
-script_ :: ElementBuilder
-script_ = element "script"
+script_ :: Term result => [Attribute] -> result
+script_ = term "script"
 
 -- | @set@ element
-set_ :: ElementBuilder
-set_ = element "set"
+set_ :: Term result => [Attribute] -> result
+set_ = term "set"
 
 -- | @stop@ element
-stop_ :: ElementBuilder
-stop_ = element "stop"
+stop_ :: Term result => [Attribute] -> result
+stop_ = term "stop"
 
 -- | @style@ element
-style_ :: ElementBuilder
-style_ = element "style"
+style_ :: Term result => [Attribute] -> result
+style_ = term "style"
 
 -- | @svg@ element
-svg_ :: ElementBuilder
-svg_ = element "svg"
+svg_ :: Term result => [Attribute] -> result
+svg_ = term "svg"
 
 -- | @switch@ element
-switch_ :: ElementBuilder
-switch_ = element "switch"
+switch_ :: Term result => [Attribute] -> result
+switch_ = term "switch"
 
 -- | @symbol@ element
-symbol_ :: ElementBuilder
-symbol_ = element "symbol"
+symbol_ :: Term result => [Attribute] -> result
+symbol_ = term "symbol"
 
 -- | @text_@ element
-text_ :: ElementBuilder
-text_ = element "text"
+text_ :: Term result => [Attribute] -> result
+text_ = term "text"
 
 -- | @textpath@ element
-textPath_ :: ElementBuilder
-textPath_ = element "textPath"
+textPath_ :: Term result => [Attribute] -> result
+textPath_ = term "textPath"
 
 -- | @title@ element
-title_ :: ElementBuilder
-title_ = element "title"
+title_ :: Term result => [Attribute] -> result
+title_ = term "title"
 
 -- | @tref@ element
-tref_ :: ElementBuilder
-tref_ = element "tref"
+tref_ :: Term result => [Attribute] -> result
+tref_ = term "tref"
 
 -- | @tspan@ element
-tspan_ :: ElementBuilder
-tspan_ = element "tspan"
+tspan_ :: Term result => [Attribute] -> result
+tspan_ = term "tspan"
 
 -- | @use@ element
-use_ :: ElementBuilder
-use_ = element "use"
+use_ :: Term result => [Attribute] -> result
+use_ = term "use"
 
 -- | @view@ element
-view_ :: ElementBuilder
-view_ = element "view"
+view_ :: Term result => [Attribute] -> result
+view_ = term "view"
 
 -- | @vkern@ element
 vkern_ :: [Attribute] -> Element

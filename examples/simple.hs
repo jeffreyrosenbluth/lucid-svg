@@ -9,8 +9,8 @@ svg content =
 
 contents :: Element
 contents =
-     rect_   [ Width <<- "100%", Height <<- "100%", "red" ->> Fill] nil
-  <> circle_ [ Cx <<- "150", Cy <<- "100", R <<- "80", Fill <<- "green"] nil
+     rect_   [ Width <<- "100%", Height <<- "100%", "red" ->> Fill]
+  <> circle_ [ Cx <<- "150", Cy <<- "100", R <<- "80", Fill <<- "green"]
   <> text_   [ X <<- "150", Y <<- "125", Font_size <<- "60"
              , Text_anchor <<- "middle", Fill <<- "white"] "SVG"
 
