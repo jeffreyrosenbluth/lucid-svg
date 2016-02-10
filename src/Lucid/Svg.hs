@@ -81,7 +81,7 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 -- Attributes are set by providing an argument list. Each argument is set
 -- using the 'bindAttr' function or operators, '<<-' and '->>'.
 --
--- >>> rect_ [Width  <<- "100%", Height  <<- "100%", "red" ->> Fill] nil
+-- >>> rect_ [Width_  <<- "100%", Height_  <<- "100%", "red" ->> Fill_] nil
 -- <rect height="100%" width="100%" fill="red"></rect>
 --
 -- Path data can be constructed using the functions in 'Lucid.Svg.Path'
@@ -90,11 +90,11 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 -- @
 -- path_
 --   [ D  <<- (mA 10 80 <> qA 52.5 10 95 80 <> tA 180 80 <> z)
---   , Stroke  <<- "blue"
---   , Fill  <<- "orange"
---   ] nil
+--   , Stroke_  <<- "blue"
+--   , Fill_  <<- "orange"
+--   ]
 -- @
--- > <path d="M 10,80 Q 52.5,10 95,80 T 180,80 Z" stroke="blue" fill="orange"></path>
+-- > <path d="M 10,80 Q 52.5,10 95,80 T 180,80 Z" stroke="blue" fill="orange"/>
 --
 -- __A slightly longer example__:
 --
@@ -103,14 +103,14 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 -- > svg :: Element -> Element
 -- > svg content =
 -- >      doctype
--- >   <> with (svg11_ content) [Version <<- "1.1", Width <<- "300" , Height <<- "200"]
+-- >   <> with (svg11_ content) [Version_ <<- "1.1", Width_ <<- "300" , Height_ <<- "200"]
 -- >
 -- > contents :: Element
 -- > contents =
--- >      rect_ [Width  <<- "100%", Height  <<- "100%", Fill  <<- "red"]
--- >   <> circle_ [Cx  <<- "150", Cy  <<- "100", R  <<- "80", Fill  <<- "green"]
--- >   <> text_ [ X  <<- "150", Y  <<- "125", FontSize  <<- "60"
--- >            , TextAnchor  <<- "middle", Fill  <<- "white" ] "SVG"
+-- >      rect_ [Width_  <<- "100%", Height_  <<- "100%", Fill_  <<- "red"]
+-- >   <> circle_ [Cx_  <<- "150", Cy_  <<- "100", R_  <<- "80", Fill_  <<- "green"]
+-- >   <> text_ [ X_  <<- "150", Y_  <<- "125", FontSize_  <<- "60"
+-- >            , TextAnchor_  <<- "middle", Fill_  <<- "white" ] "SVG"
 -- >
 -- >
 -- > main :: IO ()
