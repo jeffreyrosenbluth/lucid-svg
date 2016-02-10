@@ -36,6 +36,7 @@ import qualified Blaze.ByteString.Builder as BB
 import qualified Blaze.ByteString.Builder.Html.Utf8 as BB
 import qualified Data.ByteString.Lazy as LB
 import           Data.ByteString.Lazy (ByteString)
+import           Data.Hashable (Hashable(..))
 import           Data.HashMap.Strict (HashMap)
 import qualified Data.HashMap.Strict as M
 import           Data.Monoid
@@ -50,6 +51,9 @@ import qualified Data.Text.Lazy.Encoding as LT
 -- | Attribute name value.
 data Attribute = Attribute !Text !Text
   deriving (Show,Eq)
+
+instance Hashable Attribute where
+  hashWithSalt salt (Attribute a b) = salt `hashWithSalt` a `hashWithSalt` b
 
 -- | Type of an SVG element.
 newtype Element = Element (HashMap Text Text -> Builder)
