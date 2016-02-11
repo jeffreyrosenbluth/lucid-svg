@@ -14,338 +14,338 @@
 
 module Lucid.Svg.Elements where
 
-import Lucid.Base
-
--- | A type alias for the 'SvgT m a' monad transformer.
-type SvgT = HtmlT
+import Lucid.Svg.Core
 
 -- | @DOCTYPE@ element
-doctype_ :: Monad m => SvgT m ()
-doctype_ = makeElementNoEnd "?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n    \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\""
+doctype :: Element
+doctype = makeElementDoctype "?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n    \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\""
 
--- | @svg@ element + svg 1.1 attributes
-svg11_:: Term [Attribute] (s -> t) => s -> t
-svg11_ m = svg_ [ makeAttribute "xmlns" "http://www.w3.org/2000/svg"
-                , makeAttribute "xmlns:xlink" "http://www.w3.org/1999/xlink"
-                , makeAttribute "version" "1.1" ]
-           m
+-- | @svg@ element + svg 1.1 Attribute
+svg11_:: Element -> Element
+svg11_ = svg_ [ makeAttribute "xmlns" "http://www.w3.org/2000/svg"
+              , makeAttribute "xmlns:xlink" "http://www.w3.org/1999/xlink"
+              , makeAttribute "version" "1.1" ]
 
 -- | @a@ element
-a_ :: Term arg result => arg -> result
+a_ :: Term result => [Attribute] -> result
 a_ = term "a"
 
 -- | @altglyph@ element
-altGlyph_ :: Monad m => [Attribute] -> SvgT m ()
-altGlyph_ = with $ makeXmlElementNoEnd "altGlyph"
+{-# DEPRECATED altGlyph_ "Removed from web standards." #-}
+altGlyph_ :: Term result => [Attribute] -> result
+altGlyph_ = term "altGlyph"
 
 -- | @altglyphdef@ element
-altGlyphDef_ :: Monad m => [Attribute] -> SvgT m ()
-altGlyphDef_ = with $ makeXmlElementNoEnd "altGlyphDef"
+{-# DEPRECATED altGlyphDef_ "Removed from web standards." #-}
+altGlyphDef_ :: Term result => [Attribute] -> result
+altGlyphDef_ = term "altGlyphDef"
 
 -- | @altglyphitem@ element
-altGlyphItem_ :: Monad m => [Attribute] -> SvgT m ()
-altGlyphItem_ = with $ makeXmlElementNoEnd "altGlyphItem"
+{-# DEPRECATED altGlyphItem_ "Removed from web standards." #-}
+altGlyphItem_ :: Term result => [Attribute] -> result
+altGlyphItem_ = term "altGlyphItem"
 
 -- | @animate@ element
-animate_ :: Monad m => [Attribute] -> SvgT m ()
-animate_ = with $ makeXmlElementNoEnd "animate"
+animate_ :: Term result => [Attribute] -> result
+animate_ = term "animate"
 
 -- | @animatecolor@ element
-animateColor_ :: Monad m => [Attribute] -> SvgT m ()
-animateColor_ = with $ makeXmlElementNoEnd "animateColor"
+{-# DEPRECATED animateColor_ "Removed from web standards." #-}
+animateColor_ :: Term result => [Attribute] -> result
+animateColor_ = term "animateColor"
 
 -- | @animatemotion@ element
-animateMotion_ :: Monad m => [Attribute] -> SvgT m ()
-animateMotion_ = with $ makeXmlElementNoEnd "animateMotion"
+animateMotion_ :: Term result => [Attribute] -> result
+animateMotion_ = term "animateMotion"
 
 -- | @animatetransform@ element
-animateTransform_ :: Monad m => [Attribute] -> SvgT m ()
-animateTransform_ = with $ makeXmlElementNoEnd "animateTransform"
+animateTransform_ :: Term result => [Attribute] -> result
+animateTransform_ = term "animateTransform"
 
 -- | @circle@ element
-circle_ :: Monad m => [Attribute] -> SvgT m ()
-circle_ = with $ makeXmlElementNoEnd "circle"
+circle_ :: Term result => [Attribute] -> result
+circle_ = term "circle"
 
 -- | @clipPath@ element or attribute
-clipPath_ :: Term arg result => arg -> result
+clipPath_ :: Term result => [Attribute] -> result
 clipPath_ = term "clipPath"
 
 -- | @colorProfile@ element
-colorProfile_ :: Monad m => [Attribute] -> SvgT m ()
-colorProfile_ = with $ makeXmlElementNoEnd "color-profile"
+colorProfile_ :: Term result => [Attribute] -> result
+colorProfile_ = term "color-profile"
 
 -- | @cursor@ element
-cursor_ :: Monad m => [Attribute] -> SvgT m ()
-cursor_ = with $ makeXmlElementNoEnd "cursor"
+cursor_ :: Term result => [Attribute] -> result
+cursor_ = term "cursor"
 
 -- | @defs@ element
-defs_ :: Term arg result => arg -> result
+defs_ :: Term result => [Attribute] -> result
 defs_ = term "defs"
 
 -- | @desc@ element
-desc_ :: Monad m => [Attribute] -> SvgT m ()
-desc_ = with $ makeXmlElementNoEnd "desc"
+desc_ :: Term result => [Attribute] -> result
+desc_ = term "desc"
 
 -- | @ellipse@ element
-ellipse_ :: Monad m => [Attribute] -> SvgT m ()
-ellipse_ = with $ makeXmlElementNoEnd "ellipse"
+ellipse_ :: Term result => [Attribute] -> result
+ellipse_ = term "ellipse"
 
 -- | @feblend@ element
-feBlend_ :: Monad m => [Attribute] -> SvgT m ()
-feBlend_ = with $ makeXmlElementNoEnd "feBlend"
+feBlend_ :: Term result => [Attribute] -> result
+feBlend_ = term "feBlend"
 
 -- | @fecolormatrix@ element
-feColorMatrix_ :: Monad m => [Attribute] -> SvgT m ()
-feColorMatrix_ = with $ makeXmlElementNoEnd "feColorMatrix"
+feColorMatrix_ :: Term result => [Attribute] -> result
+feColorMatrix_ = term "feColorMatrix"
 
 -- | @fecomponenttransfer@ element
-feComponentTransfer_ :: Monad m => [Attribute] -> SvgT m ()
-feComponentTransfer_ = with $ makeXmlElementNoEnd "feComponentTransfer"
+feComponentTransfer_ :: Term result => [Attribute] -> result
+feComponentTransfer_ = term "feComponentTransfer"
 
 -- | @fecomposite@ element
-feComposite_ :: Monad m => [Attribute] -> SvgT m ()
-feComposite_ = with $ makeXmlElementNoEnd "feComposite"
+feComposite_ :: Term result => [Attribute] -> result
+feComposite_ = term "feComposite"
 
 -- | @feconvolvematrix@ element
-feConvolveMatrix_ :: Monad m => [Attribute] -> SvgT m ()
-feConvolveMatrix_ = with $ makeXmlElementNoEnd "feConvolveMatrix"
+feConvolveMatrix_ :: Term result => [Attribute] -> result
+feConvolveMatrix_ = term "feConvolveMatrix"
 
 -- | @fediffuselighting@ element
-feDiffuseLighting_ :: Monad m => [Attribute] -> SvgT m ()
-feDiffuseLighting_ = with $ makeXmlElementNoEnd "feDiffuseLighting"
+feDiffuseLighting_ :: Term result => [Attribute] -> result
+feDiffuseLighting_ = term "feDiffuseLighting"
 
 -- | @fedisplacementmap@ element
-feDisplacementMap_ :: Monad m => [Attribute] -> SvgT m ()
-feDisplacementMap_ = with $ makeXmlElementNoEnd "feDisplacementMap"
+feDisplacementMap_ :: Term result => [Attribute] -> result
+feDisplacementMap_ = term "feDisplacementMap"
 
 -- | @fedistantlight@ element
-feDistantLight_ :: Monad m => [Attribute] -> SvgT m ()
-feDistantLight_ = with $ makeXmlElementNoEnd "feDistantLight"
+feDistantLight_ :: Term result => [Attribute] -> result
+feDistantLight_ = term "feDistantLight"
 
 -- | @feflood@ element
-feFlood_ :: Monad m => [Attribute] -> SvgT m ()
-feFlood_ = with $ makeXmlElementNoEnd "feFlood"
+feFlood_ :: Term result => [Attribute] -> result
+feFlood_ = term "feFlood"
 
 -- | @fefunca@ element
-feFuncA_ :: Monad m => [Attribute] -> SvgT m ()
-feFuncA_ = with $ makeXmlElementNoEnd "feFuncA"
+feFuncA_ :: Term result => [Attribute] -> result
+feFuncA_ = term "feFuncA"
 
 -- | @fefuncb@ element
-feFuncB_ :: Monad m => [Attribute] -> SvgT m ()
-feFuncB_ = with $ makeXmlElementNoEnd "feFuncB"
+feFuncB_ :: Term result => [Attribute] -> result
+feFuncB_ = term "feFuncB"
 
 -- | @fefuncg@ element
-feFuncG_ :: Monad m => [Attribute] -> SvgT m ()
-feFuncG_ = with $ makeXmlElementNoEnd "feFuncG"
+feFuncG_ :: Term result => [Attribute] -> result
+feFuncG_ = term "feFuncG"
 
 -- | @fefuncr@ element
-feFuncR_ :: Monad m => [Attribute] -> SvgT m ()
-feFuncR_ = with $ makeXmlElementNoEnd "feFuncR"
+feFuncR_ :: Term result => [Attribute] -> result
+feFuncR_ = term "feFuncR"
 
 -- | @fegaussianblur@ element
-feGaussianBlur_ :: Monad m => [Attribute] -> SvgT m ()
-feGaussianBlur_ = with $ makeXmlElementNoEnd "feGaussianBlur"
+feGaussianBlur_ :: Term result => [Attribute] -> result
+feGaussianBlur_ = term "feGaussianBlur"
 
 -- | @feimage@ element
-feImage_ :: Monad m => [Attribute] -> SvgT m ()
-feImage_ = with $ makeXmlElementNoEnd "feImage"
+feImage_ :: Term result => [Attribute] -> result
+feImage_ = term "feImage"
 
 -- | @femerge@ element
-feMerge_ :: Monad m => [Attribute] -> SvgT m ()
-feMerge_ = with $ makeXmlElementNoEnd "feMerge"
+feMerge_ :: Term result => [Attribute] -> result
+feMerge_ = term "feMerge"
 
 -- | @femergenode@ element
-feMergeNode_ :: Monad m => [Attribute] -> SvgT m ()
-feMergeNode_ = with $ makeXmlElementNoEnd "feMergeNode"
+feMergeNode_ :: Term result => [Attribute] -> result
+feMergeNode_ = term "feMergeNode"
 
 -- | @femorphology@ element
-feMorphology_ :: Monad m => [Attribute] -> SvgT m ()
-feMorphology_ = with $ makeXmlElementNoEnd "feMorphology"
+feMorphology_ :: Term result => [Attribute] -> result
+feMorphology_ = term "feMorphology"
 
 -- | @feoffset@ element
-feOffset_ :: Monad m => [Attribute] -> SvgT m ()
-feOffset_ = with $ makeXmlElementNoEnd "feOffset"
+feOffset_ :: Term result => [Attribute] -> result
+feOffset_ = term "feOffset"
 
 -- | @fepointlight@ element
-fePointLight_ :: Monad m => [Attribute] -> SvgT m ()
-fePointLight_ = with $ makeXmlElementNoEnd "fePointLight"
+fePointLight_ :: Term result => [Attribute] -> result
+fePointLight_ = term "fePointLight"
 
 -- | @fespecularlighting@ element
-feSpecularLighting_ :: Monad m => [Attribute] -> SvgT m ()
-feSpecularLighting_ = with $ makeXmlElementNoEnd "feSpecularLighting"
+feSpecularLighting_ :: Term result => [Attribute] -> result
+feSpecularLighting_ = term "feSpecularLighting"
 
 -- | @fespotlight@ element
-feSpotLight_ :: Monad m => [Attribute] -> SvgT m ()
-feSpotLight_ = with $ makeXmlElementNoEnd "feSpotLight"
+feSpotLight_ :: Term result => [Attribute] -> result
+feSpotLight_ = term "feSpotLight"
 
 -- | @fetile@ element
-feTile_ :: Monad m => [Attribute] -> SvgT m ()
-feTile_ = with $ makeXmlElementNoEnd "feTile"
+feTile_ :: Term result => [Attribute] -> result
+feTile_ = term "feTile"
 
 -- | @feturbulence@ element
-feTurbulence_ :: Monad m => [Attribute] -> SvgT m ()
-feTurbulence_ = with $ makeXmlElementNoEnd "feTurbulence"
+feTurbulence_ :: Term result => [Attribute] -> result
+feTurbulence_ = term "feTurbulence"
 
 -- | @filter_@ element
-filter_ :: Monad m => [Attribute] -> SvgT m ()
-filter_ = with $ makeXmlElementNoEnd "filter"
+filter_ :: Term result => [Attribute] -> result
+filter_ = term "filter"
 
 -- | @font@ element
-font_ :: Monad m => [Attribute] -> SvgT m ()
-font_ = with $ makeXmlElementNoEnd "font"
+font_ :: Term result => [Attribute] -> result
+font_ = term "font"
 
 -- | @fontFace@ element
-fontFace_ :: Monad m => [Attribute] -> SvgT m ()
-fontFace_ = with $ makeXmlElementNoEnd "font-face"
+fontFace_ :: Term result => [Attribute] -> result
+fontFace_ = term "font-face"
 
 -- | @fontFaceFormat@ element
-fontFaceFormat_ :: Monad m => [Attribute] -> SvgT m ()
-fontFaceFormat_ = with $ makeXmlElementNoEnd "font-face-format"
+fontFaceFormat_ :: [Attribute] -> Element
+fontFaceFormat_ = with $ makeElementNoEnd "font-face-format"
 
 -- | @fontFaceName@ element
-fontFaceName_ :: Monad m => [Attribute] -> SvgT m ()
-fontFaceName_ = with $ makeXmlElementNoEnd "font-face-name"
+fontFaceName_ :: [Attribute] -> Element
+fontFaceName_ = with $ makeElementNoEnd "font-face-name"
 
 -- | @fontFaceSrc@ element
-fontFaceSrc_ :: Monad m => [Attribute] -> SvgT m ()
-fontFaceSrc_ = with $ makeXmlElementNoEnd "font-face-src"
+fontFaceSrc_ :: Term result => [Attribute] -> result
+fontFaceSrc_ = term "font-face-src"
 
 -- | @fontFaceUri@ element
-fontFaceUri_ :: Monad m => [Attribute] -> SvgT m ()
-fontFaceUri_ = with $ makeXmlElementNoEnd "font-face-uri"
+fontFaceUri_ :: Term result => [Attribute] -> result
+fontFaceUri_ = term "font-face-uri"
 
 -- | @foreignobject@ element
-foreignObject_ :: Monad m => [Attribute] -> SvgT m ()
-foreignObject_ = with $ makeXmlElementNoEnd "foreignObject"
+foreignObject_ :: Term result => [Attribute] -> result
+foreignObject_ = term "foreignObject"
 
 -- | @g@ element
-g_ :: Term arg result => arg -> result
+g_ :: Term result => [Attribute] -> result
 g_ = term "g"
 
 -- | @glyph@ element or attribute
-glyph_ :: Term arg result => arg -> result
+glyph_ :: Term result => [Attribute] -> result
 glyph_ = term "glyph"
 
 -- | @glyphref@ element
-glyphRef_ :: Monad m => [Attribute] -> SvgT m ()
-glyphRef_ = with $ makeXmlElementNoEnd "glyphRef"
+glyphRef_ :: [Attribute] -> Element
+glyphRef_ = with $ makeElementNoEnd "glyphRef"
 
 -- | @hkern@ element
-hkern_ :: Monad m => [Attribute] -> SvgT m ()
-hkern_ = with $ makeXmlElementNoEnd "hkern"
+hkern_ :: [Attribute] -> Element
+hkern_ = with $ makeElementNoEnd "hkern"
 
 -- | @image@ element
-image_ :: Monad m => [Attribute] -> SvgT m ()
-image_ = with $ makeXmlElementNoEnd "image"
+image_ :: Term result => [Attribute] -> result
+image_ = term "image"
 
 -- | @line@ element
-line_ :: Monad m => [Attribute] -> SvgT m ()
-line_ = with $ makeXmlElementNoEnd "line"
+line_ :: Term result => [Attribute] -> result
+line_ = term "line"
 
 -- | @lineargradient@ element
-linearGradient_ :: Term arg result => arg -> result
+linearGradient_ :: Term result => [Attribute] -> result
 linearGradient_ = term "linearGradient"
 
 -- | @marker@ element
-marker_ :: Term arg result => arg -> result
+marker_ :: Term result => [Attribute] -> result
 marker_ = term "marker"
 
 -- | @mask@ element or attribute
-mask_ :: Term arg result => arg -> result
+mask_ :: Term result => [Attribute] -> result
 mask_ = term "mask"
 
 -- | @metadata@ element
-metadata_ :: Monad m => [Attribute] -> SvgT m ()
-metadata_ = with $ makeXmlElementNoEnd "metadata"
+metadata_ :: Term result => [Attribute] -> result
+metadata_ = term "metadata"
 
 -- | @missingGlyph@ element
-missingGlyph_ :: Term arg result => arg -> result
+missingGlyph_ :: Term result => [Attribute] -> result
 missingGlyph_ = term "missing-glyph"
 
 -- | @mpath@ element
-mpath_ :: Monad m => [Attribute] -> SvgT m ()
-mpath_ = with $ makeXmlElementNoEnd "mpath"
+mpath_ :: Term result => [Attribute] -> result
+mpath_ = term "mpath"
 
 -- | @path@ element
-path_ :: Monad m => [Attribute] -> SvgT m ()
-path_ = with $ makeXmlElementNoEnd "path"
+path_ :: Term result => [Attribute] -> result
+path_ = term "path"
 
 -- | @pattern@ element
-pattern_ :: Term arg result => arg -> result
+pattern_ :: Term result => [Attribute] -> result
 pattern_ = term "pattern"
 
 -- | @polygon@ element
-polygon_ :: Monad m => [Attribute] -> SvgT m ()
-polygon_ = with $ makeXmlElementNoEnd "polygon"
+polygon_ :: Term result => [Attribute] -> result
+polygon_ = term "polygon"
 
 -- | @polyline@ element
-polyline_ :: Monad m => [Attribute] -> SvgT m ()
-polyline_ = with $ makeXmlElementNoEnd "polyline"
+polyline_ :: Term result => [Attribute] -> result
+polyline_ = term "polyline"
 
 -- | @radialgradient@ element
-radialGradient_ :: Term arg result => arg -> result
+radialGradient_ :: Term result => [Attribute] -> result
 radialGradient_ = term "radialGradient"
 
 -- | @rect@ element
-rect_ :: Monad m => [Attribute] -> SvgT m ()
-rect_ = with $ makeXmlElementNoEnd "rect"
+rect_ :: Term result => [Attribute] -> result
+rect_ = term "rect"
 
 -- | @script@ element
-script_ :: Monad m => [Attribute] -> SvgT m ()
-script_ = with $ makeXmlElementNoEnd "script"
+script_ :: Term result => [Attribute] -> result
+script_ = term "script"
 
 -- | @set@ element
-set_ :: Monad m => [Attribute] -> SvgT m ()
-set_ = with $ makeXmlElementNoEnd "set"
+set_ :: Term result => [Attribute] -> result
+set_ = term "set"
 
 -- | @stop@ element
-stop_ :: Monad m => [Attribute] -> SvgT m ()
-stop_ = with $ makeXmlElementNoEnd "stop"
+stop_ :: Term result => [Attribute] -> result
+stop_ = term "stop"
 
 -- | @style@ element
-style_ :: Monad m => [Attribute] -> SvgT m ()
-style_ = with $ makeXmlElementNoEnd "style"
+style_ :: Term result => [Attribute] -> result
+style_ = term "style"
 
 -- | @svg@ element
-svg_ :: Term arg result => arg -> result
+svg_ :: Term result => [Attribute] -> result
 svg_ = term "svg"
 
 -- | @switch@ element
-switch_ :: Term arg result => arg -> result
+switch_ :: Term result => [Attribute] -> result
 switch_ = term "switch"
 
 -- | @symbol@ element
-symbol_ :: Term arg result => arg -> result
+symbol_ :: Term result => [Attribute] -> result
 symbol_ = term "symbol"
 
 -- | @text_@ element
-text_ :: Term arg result => arg -> result
+text_ :: Term result => [Attribute] -> result
 text_ = term "text"
 
 -- | @textpath@ element
-textPath_ :: Term arg result => arg -> result
+textPath_ :: Term result => [Attribute] -> result
 textPath_ = term "textPath"
 
 -- | @title@ element
-title_ :: Monad m => [Attribute] -> SvgT m ()
-title_ = with $ makeXmlElementNoEnd "title"
+title_ :: Term result => [Attribute] -> result
+title_ = term "title"
 
 -- | @tref@ element
-tref_ :: Monad m => [Attribute] -> SvgT m ()
-tref_ = with $ makeXmlElementNoEnd "tref"
+tref_ :: Term result => [Attribute] -> result
+tref_ = term "tref"
 
 -- | @tspan@ element
-tspan_ :: Monad m => [Attribute] -> SvgT m ()
-tspan_ = with $ makeXmlElementNoEnd "tspan"
+tspan_ :: Term result => [Attribute] -> result
+tspan_ = term "tspan"
 
 -- | @use@ element
-use_ :: Monad m => [Attribute] -> SvgT m ()
-use_ = with $ makeXmlElementNoEnd "use"
+use_ :: Term result => [Attribute] -> result
+use_ = term "use"
 
 -- | @view@ element
-view_ :: Monad m => [Attribute] -> SvgT m ()
-view_ = with $ makeXmlElementNoEnd "view"
+view_ :: Term result => [Attribute] -> result
+view_ = term "view"
 
 -- | @vkern@ element
-vkern_ :: Monad m => [Attribute] -> SvgT m ()
-vkern_ = with $ makeXmlElementNoEnd "vkern"
+vkern_ :: [Attribute] -> Element
+vkern_ = with $ makeElementNoEnd "vkern"

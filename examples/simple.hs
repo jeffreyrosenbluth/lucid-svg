@@ -2,17 +2,17 @@
 
 import Lucid.Svg
 
-svg :: Svg () -> Svg ()
-svg content = do
-  doctype_
-  with (svg11_ content) [version_ "1.1", width_ "300" , height_ "200"]
+svg :: Element -> Element
+svg content =
+     doctype
+  <> with (svg11_ content) [Version_ <<- "1.1", Width_ <<- "300", Height_ <<- "200"]
 
-contents :: Svg ()
-contents = do
-  rect_   [width_ "100%", height_ "100%", fill_ "red"]
-  circle_ [cx_ "150", cy_ "100", r_ "80", fill_ "green"]
-  text_   [x_ "150", y_ "125", font_size_ "60", text_anchor_ "middle", fill_ "white"] "SVG"
-
+contents :: Element
+contents =
+     rect_   [ Width_ <<- "100%", Height_ <<- "100%", "red" ->> Fill_]
+  <> circle_ [ Cx_ <<- "150", Cy_ <<- "100", R_ <<- "80", Fill_ <<- "green"]
+  <> text_   [ X_ <<- "150", Y_ <<- "125", Font_size_ <<- "60"
+             , Text_anchor_ <<- "middle", Fill_ <<- "white"] "SVG"
 
 main :: IO ()
 main = do
