@@ -31,14 +31,14 @@ bindAttr t v = makeAttribute (tag2text t) v
 -- | Infix version of 'bindAttr'
 -- Each argument is set using '<<-', the 'bindAttr' function or '->>'.
 --
--- > [Width  <<- "100%", Height  <<- "100%", Fill <<- "red"]
+-- > [Width_ <<- "100%", Height_ <<- "100%", Fill_ <<- "red"]
 infix 4  <<-
 (<<-) :: AttrTag -> Text -> Attribute
 (<<-) = bindAttr
 
 -- | Infix version of 'bindAttr' with it's arguments reversed.
 --
--- > ["100%" ->> Width, "100%" ->> Height, "red" ->> Fill]
+-- > ["100%" ->> Width_, "100%" ->> Height_, "red" ->> Fill_]
 infix 4  ->>
 (->>) :: Text -> AttrTag -> Attribute
 (->>) = flip bindAttr

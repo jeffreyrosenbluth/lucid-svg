@@ -81,7 +81,7 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 -- Attributes are set by providing an argument list. Each argument is set
 -- using the 'bindAttr' function or operators, '<<-' and '->>'.
 --
--- >>> rect_ [Width_  <<- "100%", Height_  <<- "100%", "red" ->> Fill_] nil
+-- >>> rect_ [Width_ <<- "100%", Height_ <<- "100%", "red" ->> Fill_]
 -- <rect height="100%" width="100%" fill="red"></rect>
 --
 -- Path data can be constructed using the functions in 'Lucid.Svg.Path'
@@ -89,14 +89,14 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 --
 -- @
 -- path_
---   [ D  <<- (mA 10 80 <> qA 52.5 10 95 80 <> tA 180 80 <> z)
---   , Stroke_  <<- "blue"
---   , Fill_  <<- "orange"
+--   [ D_ <<- (mA 10 80 <> qA 52.5 10 95 80 <> tA 180 80 <> z)
+--   , Stroke_ <<- "blue"
+--   , Fill_ <<- "orange"
 --   ]
 -- @
 -- > <path d="M 10,80 Q 52.5,10 95,80 T 180,80 Z" stroke="blue" fill="orange"/>
 --
--- __A slightly longer example__:
+-- __A slightly longer example__
 --
 -- > import Lucid.Svg
 -- >
@@ -107,13 +107,45 @@ prettyText svg = B.toLazyText $ LT.foldr go mempty text Nothing (-1)
 -- >
 -- > contents :: Element
 -- > contents =
--- >      rect_ [Width_  <<- "100%", Height_  <<- "100%", Fill_  <<- "red"]
--- >   <> circle_ [Cx_  <<- "150", Cy_  <<- "100", R_  <<- "80", Fill_  <<- "green"]
--- >   <> text_ [ X_  <<- "150", Y_  <<- "125", FontSize_  <<- "60"
--- >            , TextAnchor_  <<- "middle", Fill_  <<- "white" ] "SVG"
+-- >      rect_ [Width_ <<- "100%", Height_ <<- "100%", Fill_ <<- "red"]
+-- >   <> circle_ [Cx_ <<- "150", Cy_ <<- "100", R_ <<- "80", Fill_ <<- "green"]
+-- >   <> text_ [ X_ <<- "150", Y_ <<- "125", FontSize_ <<- "60"
+-- >            , TextAnchor_ <<- "middle", Fill_ <<- "white" ] "SVG"
 -- >
 -- >
 -- > main :: IO ()
 -- > main = do
 -- >   print $ svg contents
 -- <<http://i.imgur.com/dXu84xR.png>>
+--
+-- __The haskell logo__
+--
+-- > {-# LANGUAGE OverloadedStrings #-}
+-- >
+-- > import Lucid.Svg
+-- >
+-- > svg :: Element -> Element
+-- > svg content =
+-- >      doctype
+-- >   <> with (svg11_ content) [Version_ <<- "1.1", Width_ <<- "482", Height_ <<- "340"]
+-- >
+-- > logo :: Element
+-- > logo =
+-- >      path_ [ Fill_ <<- "#352950"
+-- >            , D_ <<- ( mA 0 340 <> lA 113 170 <> lA 0 0 <> lA 85 0
+-- >                    <> lA 198 170 <> lA 85 340 <> lA 0 340 <> z <> mA 0 340 ) ]
+-- >   <> path_ [ Fill_ <<- "#4A3A74"
+-- >            , D_ <<- ( mA 113 340 <> lA 226 170 <> lA 113 0 <> lA 198 0
+-- >                    <> lA 425 340 <> lA 340 340 <> lA 269 234 <> lA 198 340
+-- >                    <> lA 113 340 <> z <> mA 113 340 ) ]
+-- >   <> path_ [ Fill_ <<- "#7C3679"
+-- >            , D_ <<- ( mA 387 241 <> lA 350 184 <> lA 482 184 <> lA 482 241
+-- >                    <> lA 387 241 <> z <> mA 387 241 ) ]
+-- >   <> path_ [ Fill_ <<- "#7C3679"
+-- >            , D_ <<- ( mA 331 156 <> lA 293 99 <> lA 482 99 <> lA 482 156
+-- >                    <> lA 331 156 <> z <> mA 331 156 ) ]
+-- >
+-- > main :: IO ()
+-- > main = do
+-- >   print $ svg logo
+-- <<http://i.imgur.com/tuFExZl.png>>
