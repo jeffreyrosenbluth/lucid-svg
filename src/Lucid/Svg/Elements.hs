@@ -83,8 +83,8 @@ defs_ :: Term arg result => arg -> result
 defs_ = term "defs"
 
 -- | @desc@ element
-desc_ :: Monad m => [Attribute] -> SvgT m ()
-desc_ = with $ makeXmlElementNoEnd "desc"
+desc_ :: Term arg result => arg -> result
+desc_ = term "desc"
 
 -- | @ellipse@ element
 ellipse_ :: Monad m => [Attribute] -> SvgT m ()
@@ -327,8 +327,8 @@ textPath_ :: Term arg result => arg -> result
 textPath_ = term "textPath"
 
 -- | @title@ element
-title_ :: Monad m => [Attribute] -> SvgT m ()
-title_ = with $ makeXmlElementNoEnd "title"
+title_ :: Term arg result => arg -> result
+title_ = term "title"
 
 -- | @tref@ element
 tref_ :: Monad m => [Attribute] -> SvgT m ()
