@@ -14,7 +14,7 @@ extra-source-files:  README.md
 cabal-version:       >=1.10
 
 library
-  ghc-options:         -Wall -rtsopts -O2
+  ghc-options:         -Wall
   exposed-modules:     Lucid.Svg,
                        Lucid.Svg.Path,
                        Lucid.Svg.Elements,
