@@ -1,3 +1,10 @@
+0.7.0.0 (29 Jun 2016)
+---------------------
+
+- allow base-4.9
+- `title` fixed to allow children.
+- `desc_` fixed to allow children.
+
 0.6.0.0 (14 Nov 2015)
 ---------------------
 

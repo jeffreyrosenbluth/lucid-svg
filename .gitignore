@@ -1,0 +1,8 @@
+*.dylib
+.cabal-sandbox
+.stack-work
+dist/build/autogen
+dist
+*.hi
+*.o
+cabal.sandbox.config
