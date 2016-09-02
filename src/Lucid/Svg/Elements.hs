@@ -187,8 +187,8 @@ feTurbulence_ :: Monad m => [Attribute] -> SvgT m ()
 feTurbulence_ = with $ makeXmlElementNoEnd "feTurbulence"
 
 -- | @filter_@ element
-filter_ :: Monad m => [Attribute] -> SvgT m ()
-filter_ = with $ makeXmlElementNoEnd "filter"
+filter_ :: Term arg result => arg -> result
+filter_ = term "filter"
 
 -- | @font@ element
 font_ :: Monad m => [Attribute] -> SvgT m ()
@@ -239,8 +239,8 @@ image_ :: Monad m => [Attribute] -> SvgT m ()
 image_ = with $ makeXmlElementNoEnd "image"
 
 -- | @line@ element
-line_ :: Monad m => [Attribute] -> SvgT m ()
-line_ = with $ makeXmlElementNoEnd "line"
+line_ :: Term arg result => arg -> result
+line_ = term "line"
 
 -- | @lineargradient@ element
 linearGradient_ :: Term arg result => arg -> result
@@ -303,8 +303,8 @@ stop_ :: Monad m => [Attribute] -> SvgT m ()
 stop_ = with $ makeXmlElementNoEnd "stop"
 
 -- | @style@ element
-style_ :: Monad m => [Attribute] -> SvgT m ()
-style_ = with $ makeXmlElementNoEnd "style"
+style_ :: Term arg result => arg -> result
+style_ = term "style"
 
 -- | @svg@ element
 svg_ :: Term arg result => arg -> result
@@ -335,8 +335,8 @@ tref_ :: Monad m => [Attribute] -> SvgT m ()
 tref_ = with $ makeXmlElementNoEnd "tref"
 
 -- | @tspan@ element
-tspan_ :: Monad m => [Attribute] -> SvgT m ()
-tspan_ = with $ makeXmlElementNoEnd "tspan"
+tspan_ :: Term arg result => arg -> result
+tspan_ = term "tspan"
 
 -- | @use@ element
 use_ :: Monad m => [Attribute] -> SvgT m ()
