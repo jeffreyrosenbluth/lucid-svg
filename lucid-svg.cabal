@@ -1,5 +1,5 @@
 name:                lucid-svg
-version:             0.7.0.1
+version:             0.7.1.1
 synopsis:            DSL for SVG using lucid for HTML
 description:         Easy to write SVG in the syle of lucid.
 homepage:            http://github.com/jeffreyrosenbluth/lucid-svg.git
